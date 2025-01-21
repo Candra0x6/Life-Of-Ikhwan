@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=NPC
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ NPC\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ NPC\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=NPC()
 comment2.params=
-comment2.target=void\ act()
+comment2.target=void\ Interact()
 comment3.params=
-comment3.target=void\ startDialog()
+comment3.target=void\ act()
 comment4.params=
-comment4.target=void\ endDialog()
+comment4.target=void\ startDialog()
 comment5.params=
-comment5.target=void\ setupDialogs()
-numComments=6
+comment5.target=void\ endDialog()
+comment6.params=
+comment6.target=void\ setupDialogs()
+numComments=7
