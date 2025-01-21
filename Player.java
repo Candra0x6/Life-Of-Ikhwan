@@ -81,27 +81,18 @@ public class Player extends ScrollActor
     }
    
      private void checkNPCInteraction() {
-        // Cek NPC dalam radius interaksi
-        List<NPC> nearbyNPCs = getObjectsInRange(50, NPC.class);
+        // Cek Interactable dalam radius interaksi
+        List<IInteractable> nearbyInteractables = getObjectsInRange(50, IInteractable.class);
         
-        if (!nearbyNPCs.isEmpty() && Greenfoot.isKeyDown("e")) {
-            // Ambil NPC terdekat
-            currentNPC = nearbyNPCs.get(0);
-            startDialog();
+        if (!nearbyInteractables.isEmpty() && Greenfoot.isKeyDown("e")) {
+            // Ambil Interactable terdekat
+            IInteractable obj = nearbyInteractables.get(0);
+            obj.Interact();
         }
     }
     
-    private void startDialog() {
-        if (currentNPC != null) {
-            isInDialog = true;
-            currentNPC.startDialog();
-        }
-    }
-    
-    // Method ini dipanggil oleh NPC ketika dialog selesai
-    public void endDialog() {
-        isInDialog = false;
-        currentNPC = null;
+    public void setIsInDialog(boolean bool){
+        isInDialog = bool;
     }
     
     public boolean isInDialog() {

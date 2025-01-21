@@ -7,15 +7,21 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class NPC extends ScrollActor
+public abstract class NPC extends ScrollActor implements IInteractable
 {
     protected DialogManager dialogManager;
     protected boolean isInteracting;
+    protected Player player;
     
     public NPC() {
         dialogManager = new DialogManager();
         isInteracting = false;
         setupDialogs();
+    }
+    
+    public void Interact() {
+        player = (Player) getOneIntersectingObject(Player.class);
+        startDialog();
     }
     
    public void act() {
@@ -38,6 +44,9 @@ public class NPC extends ScrollActor
     protected void startDialog() {
          if (dialogManager.hasDialogs()) {
             isInteracting = true;
+            if (player != null) {
+                player.setIsInDialog(true);
+            }
             dialogManager.startDialog(0);
         }
     }
@@ -45,9 +54,8 @@ public class NPC extends ScrollActor
     protected void endDialog() {
         isInteracting = false;
         // Beritahu player bahwa dialog sudah selesai
-        Player player = (Player) getOneIntersectingObject(Player.class);
         if (player != null) {
-            player.endDialog();
+            player.setIsInDialog(false);
         }
     }
     protected void setupDialogs() {

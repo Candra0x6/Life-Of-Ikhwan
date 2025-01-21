@@ -47,17 +47,17 @@ public class DialogManager extends ScrollActor
         DialogLine current = dialogLines.get(currentDialogId);
 
         // Handle input
-        if (Greenfoot.isKeyDown("up")) {
+        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
             selectedChoice = Math.max(0, selectedChoice - 1);
             Greenfoot.delay(10); // Prevent multiple inputs
         }
-        if (Greenfoot.isKeyDown("down")) {
+        if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
             if (current.getChoices() != null) {
                 selectedChoice = Math.min(current.getChoices().length - 1, selectedChoice + 1);
             }
             Greenfoot.delay(10);
         }
-         if (Greenfoot.isKeyDown("space")) {
+         if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("enter")) {
             if (current.isEnd()) {
                 isDialogActive = false;
             } else if (current.getChoices() == null) {
