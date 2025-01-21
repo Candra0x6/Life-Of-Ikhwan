@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=DialogLine
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Dialogue\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=text\ choices\ nextDialogIds\ isEnd
+comment1.target=DialogLine(java.lang.String,\ java.lang.String[],\ int[],\ boolean)
+comment2.params=
+comment2.target=java.lang.String\ getText()
+comment3.params=
+comment3.target=java.lang.String[]\ getChoices()
+comment4.params=
+comment4.target=int[]\ getNextDialogIds()
+comment5.params=
+comment5.target=boolean\ isEnd()
+numComments=6

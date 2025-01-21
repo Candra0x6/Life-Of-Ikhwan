@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=DialogManager
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DIalogManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=DialogManager()
+comment10.params=image\ text\ x\ y\ maxWidth
+comment10.target=void\ drawWrappedText(greenfoot.GreenfootImage,\ java.lang.String,\ int,\ int,\ int)
+comment2.params=dialog
+comment2.target=void\ addDialog(DialogLine)
+comment3.params=dialogId
+comment3.target=void\ startDialog(int)
+comment4.params=
+comment4.target=void\ update()
+comment5.params=
+comment5.target=void\ setupDialogBoxImage()
+comment6.params=image
+comment6.target=void\ draw(greenfoot.GreenfootImage)
+comment7.params=imagePath
+comment7.target=void\ setDialogBoxImage(java.lang.String)
+comment8.params=opacity
+comment8.target=void\ setDialogBoxOpacity(int)
+comment9.params=
+comment9.target=boolean\ hasDialogs()
+numComments=11
