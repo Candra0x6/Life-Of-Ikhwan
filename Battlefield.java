@@ -24,7 +24,9 @@ public class Battlefield extends ScrollWorld
 
         //adds mach
         Budi petani = new Budi();
-
+        Home home = new Home();
+        
+        addObject(home, 1000, 600);
         addObject(petani, 1000, 700);
         
         //adds trees;
