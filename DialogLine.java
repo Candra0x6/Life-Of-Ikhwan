@@ -14,6 +14,8 @@ public class DialogLine extends ScrollActor
     private String[] choices;
     private int[] nextDialogIds;
     private boolean isEnd;
+        private String message;
+
     
     public DialogLine(String text, String[] choices, int[] nextDialogIds, boolean isEnd) {
         this.text = text;
@@ -23,6 +25,14 @@ public class DialogLine extends ScrollActor
     }
     
     // Getters
+    public void setMessage(String message) {
+        this.message = message;
+    }
+   
+
+      public String getMessage() {
+        return message;
+    }
     public String getText() { return text; }
     public String[] getChoices() { return choices; }
     public int[] getNextDialogIds() { return nextDialogIds; }

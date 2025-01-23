@@ -18,7 +18,8 @@ public class DialogManager extends ScrollActor
     private Color dialogBoxColor;
     private Color textColor;
     private GreenfootImage dialogBoxImage; // Background image untuk dialog box
-
+    private int selectedOptionIndex;
+    
     public DialogManager() {
         dialogLines = new ArrayList<>();
         currentDialogId = 0;
@@ -31,6 +32,9 @@ public class DialogManager extends ScrollActor
         setupDialogBoxImage();
 
     }
+        public int getCurrentDialogId() { return currentDialogId; }
+    public int getSelectedOptionIndex() { return selectedOptionIndex; }
+    public boolean isDialogActive() { return isDialogActive; }
     
     public void addDialog(DialogLine dialog) {
         dialogLines.add(dialog);
@@ -42,42 +46,62 @@ public class DialogManager extends ScrollActor
         selectedChoice = 0;
     }
     
+ 
     public void update() {
-        if (!isDialogActive) return;
-        DialogLine current = dialogLines.get(currentDialogId);
+    if (!isDialogActive) return;
 
-        // Handle input
-        if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
-            selectedChoice = Math.max(0, selectedChoice - 1);
-            Greenfoot.delay(10); // Prevent multiple inputs
+    // Pastikan currentDialogId valid
+    if (currentDialogId < 0 || currentDialogId >= dialogLines.size()) {
+        isDialogActive = false; // Tutup dialog jika ID tidak valid
+        return;
+    }
+
+    DialogLine current = dialogLines.get(currentDialogId);
+
+    // Handle input untuk memilih opsi
+    if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
+        selectedChoice = Math.max(0, selectedChoice - 1);
+        Greenfoot.delay(10); // Prevent multiple inputs
+    }
+    if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
+        if (current.getChoices() != null && current.getChoices().length > 0) {
+            selectedChoice = Math.min(current.getChoices().length - 1, selectedChoice + 1);
         }
-        if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")) {
-            if (current.getChoices() != null) {
-                selectedChoice = Math.min(current.getChoices().length - 1, selectedChoice + 1);
-            }
-            Greenfoot.delay(10);
-        }
-         if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("enter")) {
-            if (current.isEnd()) {
-                isDialogActive = false;
-            } else if (current.getChoices() == null) {
-                if (current.getNextDialogIds() != null && current.getNextDialogIds().length > 0) {
-                    currentDialogId = current.getNextDialogIds()[0];
-                } else {
-                    isDialogActive = false;
-                }
+        Greenfoot.delay(10);
+    }
+
+    // Handle input untuk memilih opsi atau melanjutkan dialog
+    if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("enter")) {
+        if (current.isEnd()) {
+            // Jika dialog selesai, tutup dialog
+            isDialogActive = false;
+        } else if (current.getChoices() == null || current.getChoices().length == 0) {
+            // Jika tidak ada pilihan, lanjutkan ke dialog berikutnya (jika ada)
+            if (current.getNextDialogIds() != null && current.getNextDialogIds().length > 0) {
+                currentDialogId = current.getNextDialogIds()[0];
             } else {
+                // Jika tidak ada dialog berikutnya, tutup dialog
+                isDialogActive = false;
+            }
+        } else {
+            // Jika ada pilihan, lanjutkan ke dialog yang sesuai dengan pilihan
+            if (current.getNextDialogIds() != null && selectedChoice >= 0 && selectedChoice < current.getNextDialogIds().length) {
                 int nextId = current.getNextDialogIds()[selectedChoice];
                 if (nextId >= 0 && nextId < dialogLines.size()) {
                     currentDialogId = nextId;
                 } else {
+                    // Jika ID dialog berikutnya tidak valid, tutup dialog
                     isDialogActive = false;
                 }
+            } else {
+                // Jika tidak ada dialog berikutnya yang valid, tutup dialog
+                isDialogActive = false;
             }
-            selectedChoice = 0;
-            Greenfoot.delay(10);
         }
+        selectedChoice = 0; // Reset pilihan
+        Greenfoot.delay(10); // Prevent multiple inputs
     }
+}
     
     private void setupDialogBoxImage() {
         try {
@@ -134,7 +158,12 @@ public class DialogManager extends ScrollActor
             System.out.println("Error loading dialog box image: " + imagePath);
         }
     }
-    
+      public DialogLine getDialog(int dialogId) {
+        if (dialogId >= 0 && dialogId < dialogLines.size()) {
+            return dialogLines.get(dialogId);
+        }
+        return null; // Return null if the dialog ID is invalid
+    } 
     // Method untuk mengatur opacity dialog box
     public void setDialogBoxOpacity(int opacity) {
         GreenfootImage newImage = new GreenfootImage(dialogBoxImage);

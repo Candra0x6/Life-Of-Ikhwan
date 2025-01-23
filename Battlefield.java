@@ -16,19 +16,19 @@ public class Battlefield extends ScrollWorld
     {    
         super(1280, 720, 1, 2500, 2500);
         Greenfoot.setSpeed(50);
-        setPaintOrder(Hud.class, HealthBar.class, BorderForest.class, Budi.class, TreeTop.class, Player.class);
+        setPaintOrder( BorderForest.class, Budi.class, TreeTop.class, Player.class, MoneyDisplay.class, ZakatBox.class);
         int numTrees = 2;
         
         addObject(new BorderForest(), 1250, 1250);
+        ZakatBox zakatBox= new ZakatBox();
+        addObject(zakatBox, 1000, 900); // Tentukan posisi kotak zakat
         
-
         //adds mach
         Budi petani = new Budi();
         Home home = new Home();
         
         addObject(home, 1000, 600);
         addObject(petani, 1000, 700);
-        
         //adds trees;
         Random rand = new Random();
         for(int i = 0; i<numTrees; i++){
@@ -37,9 +37,11 @@ public class Battlefield extends ScrollWorld
             addObject(new TreeTruck(), randX, randY);
             addObject(new TreeTop(), randX, randY - 10);
         }
-      
-        addCameraFollower(new Player(), 0, 0);
+          Player player = new Player();
+        addCameraFollower(player, 0, 0);
 
+         MoneyDisplay moneyDisplay = new MoneyDisplay(zakatBox.getMoneyManager());
+        addObject(moneyDisplay, 0, 0);
         
 
     }

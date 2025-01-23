@@ -18,6 +18,13 @@ public class Player extends ScrollActor
     private boolean isInDialog;
     private NPC currentNPC;
     private int moveSpeed = 3;
+    private MoneyManager moneyManager;
+    private DialogManager dialogManager;
+    private ZakatBox zakatBox;
+    private ZakatInteraction zakatInteraction;
+    private Box box;
+    private int selectedOption; // Opsi yang dipilih oleh pemain
+
     
 
     private static final int MOVE_AMOUNT = 3;
@@ -30,7 +37,15 @@ public class Player extends ScrollActor
         reloadTime = 32;
         isInDialog = false;
         currentNPC = null;
+        moneyManager = new MoneyManager(1000.0);
+         dialogManager = new DialogManager();  // Create this first
+    zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
+        box = new Box();
+           isInDialog = false;
+        selectedOption = -1; // -1 berarti belum memilih
+        
     }
+    
 
     //act method
     public void act() 
@@ -39,6 +54,8 @@ public class Player extends ScrollActor
             moveAround();
             checkCollisionObject();
             checkNPCInteraction();
+         checkInteraction(); // Cek interaksi dengan objek lain
+        handleInput();
         }
         
     }    
@@ -75,11 +92,7 @@ public class Player extends ScrollActor
         }  
     }
 
-    //returns health so that other classes can use it
-    public int getHealth(){
-        return myHealth;
-    }
-   
+    
      private void checkNPCInteraction() {
         // Cek Interactable dalam radius interaksi
         List<IInteractable> nearbyInteractables = getObjectsInRange(50, IInteractable.class);
@@ -98,11 +111,44 @@ public class Player extends ScrollActor
     public boolean isInDialog() {
         return isInDialog;
     }
-    
-    /**
-     * Increments score by a set amount
-     */
-    public void incrementScore(int buff){
-        score += buff;
+  
+   
+    // Method untuk mengecek interaksi dengan objek lain
+    private void checkInteraction() {
+        if (Greenfoot.isKeyDown("e")) { // Contoh: Interaksi dengan tombol spasi
+            Box box = (Box) getOneIntersectingObject(Box.class);
+            if (box != null) {
+                box.interact(); // Memulai interaksi dengan Box
+            }
+        }
+    }
+
+    // Method untuk menangani input pemain (misalnya, memilih opsi dialog)
+    private void handleInput() {
+        if (isInDialog) {
+            if (Greenfoot.isKeyDown("1")) { // Contoh: Memilih opsi 1
+                selectedOption = 0;
+            } else if (Greenfoot.isKeyDown("2")) { // Contoh: Memilih opsi 2
+                selectedOption = 1;
+            } else if (Greenfoot.isKeyDown("3")) { // Contoh: Memilih opsi 3
+                selectedOption = 2;
+            }
+        }
+    }
+
+
+    // Method untuk mendapatkan opsi yang dipilih
+    public int getSelectedOption() {
+        return selectedOption;
+    }
+
+    // Method untuk mengecek apakah pemain sedang dalam dialog
+   
+    public MoneyManager getMoneyManager() {
+        return moneyManager;
+    }
+
+    public DialogManager getDialogManager() {
+        return dialogManager;
     }
 }
