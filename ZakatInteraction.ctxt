@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=ZakatInteraction
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ZakatInteraction\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=moneyManager\ dialogManager
+comment1.target=ZakatInteraction(MoneyManager,\ DialogManager)
+comment2.params=currentDialogId\ selectedChoice
+comment2.target=void\ handleDialog(int,\ int)
+comment3.params=
+comment3.target=void\ updateConfirmationDialog()
+comment4.params=
+comment4.target=void\ processPayment()
+numComments=5
