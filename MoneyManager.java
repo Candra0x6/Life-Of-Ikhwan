@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MoneyManager extends ScrollActor
 {
-     private double balance;
+    private double balance;
     
     public MoneyManager(double initialBalance) {
         this.balance = initialBalance;
