@@ -1,6 +1,6 @@
 Class documentation
 <---- javadoc command: ---->
-D:\jdk\bin\javadoc.exe
+F:\Program Files\Greenfoot\jdk\bin\javadoc.exe
 -author
 -version
 -nodeprecated
@@ -13,16 +13,16 @@ D:\jdk\bin\javadoc.exe
 -source
 21
 -classpath
-D:\lib\greenfoot.jar;D:\lib\javafx-base-21.0.3-win.jar;D:\lib\javafx-controls-21.0.3-win.jar;D:\lib\javafx-fxml-21.0.3-win.jar;D:\lib\javafx-graphics-21.0.3-win.jar;D:\lib\javafx-media-21.0.3-win.jar;D:\lib\javafx-swing-21.0.3-win.jar;D:\lib\javafx-web-21.0.3-win.jar;D:\lib\junit-4.12.jar;D:\lib\junit-jupiter-5.5.2.jar;D:\lib\junit-jupiter-api-5.5.2.jar;D:\lib\junit-jupiter-engine-5.5.2.jar;D:\lib\junit-jupiter-params-5.5.2.jar;D:\lib\junit-platform-commons-1.5.2.jar;D:\lib\junit-platform-engine-1.5.2.jar;D:\lib\junit-platform-launcher-1.5.2.jar;D:\lib\junit-platform-suite-api-1.5.2.jar;D:\lib\junit-vintage-engine-5.5.2.jar;D:\lib\hamcrest-core-1.3.jar;D:\lib\opentest4j-1.2.0.jar;D:\lib\bluej.jar;D:\lib\classgraph-4.8.90.jar;D:\lib\diffutils-1.2.1.jar;D:\lib\commons-logging-1.2.jar;D:\lib\jl1.0.1.jar;D:\lib\opencsv-2.3.jar;D:\lib\opencsv-2.4.jar;D:\lib\xom-1.3.9.jar;D:\lib\lang-stride.jar;D:\lib\nsmenufx-3.1.0.jar;D:\lib\wellbehavedfx-0.3.3.jar;D:\lib\guava-33.3.1-jre.jar;D:\lib\failureaccess-1.0.2.jar;D:\lib\simple-png-0.2.0.jar;D:\lib\simple-png-javafx-0.2.0.jar;D:\lib\httpclient-4.5.13.jar;D:\lib\httpcore-4.4.13.jar;D:\lib\httpmime-4.1.1.jar;D:\lib\javafx\javafx.base.jar;D:\lib\javafx\javafx.controls.jar;D:\lib\javafx\javafx.fxml.jar;D:\lib\javafx\javafx.graphics.jar;D:\lib\javafx\javafx.media.jar;D:\lib\javafx\javafx.properties.jar;D:\lib\javafx\javafx.swing.jar;D:\lib\javafx\javafx.web.jar;D:\Greenfoot\Goblin-Warfare\Goblin Warfare
+F:\Program Files\Greenfoot\lib\greenfoot.jar;F:\Program Files\Greenfoot\lib\javafx-base-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-controls-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-fxml-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-graphics-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-media-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-swing-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\javafx-web-21.0.3-win.jar;F:\Program Files\Greenfoot\lib\junit-4.12.jar;F:\Program Files\Greenfoot\lib\junit-jupiter-5.5.2.jar;F:\Program Files\Greenfoot\lib\junit-jupiter-api-5.5.2.jar;F:\Program Files\Greenfoot\lib\junit-jupiter-engine-5.5.2.jar;F:\Program Files\Greenfoot\lib\junit-jupiter-params-5.5.2.jar;F:\Program Files\Greenfoot\lib\junit-platform-commons-1.5.2.jar;F:\Program Files\Greenfoot\lib\junit-platform-engine-1.5.2.jar;F:\Program Files\Greenfoot\lib\junit-platform-launcher-1.5.2.jar;F:\Program Files\Greenfoot\lib\junit-platform-suite-api-1.5.2.jar;F:\Program Files\Greenfoot\lib\junit-vintage-engine-5.5.2.jar;F:\Program Files\Greenfoot\lib\hamcrest-core-1.3.jar;F:\Program Files\Greenfoot\lib\opentest4j-1.2.0.jar;F:\Program Files\Greenfoot\lib\bluej.jar;F:\Program Files\Greenfoot\lib\classgraph-4.8.90.jar;F:\Program Files\Greenfoot\lib\diffutils-1.2.1.jar;F:\Program Files\Greenfoot\lib\commons-logging-1.2.jar;F:\Program Files\Greenfoot\lib\jl1.0.1.jar;F:\Program Files\Greenfoot\lib\opencsv-2.3.jar;F:\Program Files\Greenfoot\lib\opencsv-2.4.jar;F:\Program Files\Greenfoot\lib\xom-1.3.9.jar;F:\Program Files\Greenfoot\lib\lang-stride.jar;F:\Program Files\Greenfoot\lib\nsmenufx-3.1.0.jar;F:\Program Files\Greenfoot\lib\wellbehavedfx-0.3.3.jar;F:\Program Files\Greenfoot\lib\guava-33.3.1-jre.jar;F:\Program Files\Greenfoot\lib\failureaccess-1.0.2.jar;F:\Program Files\Greenfoot\lib\simple-png-0.2.0.jar;F:\Program Files\Greenfoot\lib\simple-png-javafx-0.2.0.jar;F:\Program Files\Greenfoot\lib\httpclient-4.5.13.jar;F:\Program Files\Greenfoot\lib\httpcore-4.4.13.jar;F:\Program Files\Greenfoot\lib\httpmime-4.1.1.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.base.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.controls.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.fxml.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.graphics.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.media.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.properties.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.swing.jar;F:\Program Files\Greenfoot\lib\javafx\javafx.web.jar;F:\Github\Life-Of-Ikhwan
 -d
-D:\Greenfoot\Goblin-Warfare\Goblin Warfare\doc
+F:\Github\Life-Of-Ikhwan\doc
 -encoding
 UTF-8
 -charset
 UTF-8
-D:\Greenfoot\Goblin-Warfare\Goblin Warfare\Player.java
+F:\Github\Life-Of-Ikhwan\Player.java
 <---- end of javadoc command ---->
-Loading source file D:\Greenfoot\Goblin-Warfare\Goblin Warfare\Player.java...
+Loading source file F:\Github\Life-Of-Ikhwan\Player.java...
 Constructing Javadoc information...
 warning: unknown enum constant Tag.Any
   reason: class file for threadchecker.Tag not found
@@ -31,7 +31,7 @@ warning: unknown enum constant Tag.Any
 warning: unknown enum constant Tag.Any
 Standard Doclet version 21.0.4+7-LTS
 Building tree for all the packages and classes...
-Generating D:\Greenfoot\Goblin-Warfare\Goblin Warfare\doc\Player.html...
-Generating D:\Greenfoot\Goblin-Warfare\Goblin Warfare\doc\package-summary.html...
-Generating D:\Greenfoot\Goblin-Warfare\Goblin Warfare\doc\index.html...
+Generating F:\Github\Life-Of-Ikhwan\doc\Player.html...
+Generating F:\Github\Life-Of-Ikhwan\doc\package-summary.html...
+Generating F:\Github\Life-Of-Ikhwan\doc\index.html...
 4 warnings

@@ -17,6 +17,7 @@ public class GameManager
     {
     }
     
+    // create a singleton
     public static GameManager getInstance(){
         if (instance == null){
             instance = new GameManager();

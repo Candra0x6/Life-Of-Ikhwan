@@ -16,7 +16,54 @@ public class Player extends ScrollActor
     private int reloadTime;
     private int score = 0;
     private int moveSpeed = 3;
+    private int animationIndex = 0;
+    private int animationDelay = 5; // Ubah nilai ini untuk mengatur kecepatan animasi
+    private int delayCounter = 0;
     private boolean isInDialog;
+    
+    private Direction playerDirection;
+    private enum Direction {
+        UP(new GreenfootImage[]{
+            new GreenfootImage("Walk_up0.png"),
+            new GreenfootImage("Walk_up1.png"),
+            new GreenfootImage("Walk_up2.png"),
+            new GreenfootImage("Walk_up3.png"),
+            new GreenfootImage("Walk_up4.png"),
+            new GreenfootImage("Walk_up5.png"),
+            new GreenfootImage("Walk_up6.png"),
+            new GreenfootImage("Walk_up7.png")
+        }),
+        LEFT(new GreenfootImage[]{
+            new GreenfootImage("Walk_left0.png"),
+            new GreenfootImage("Walk_left1.png"),
+            new GreenfootImage("Walk_left2.png"),
+            new GreenfootImage("Walk_left3.png"),
+            new GreenfootImage("Walk_left4.png"),
+            new GreenfootImage("Walk_left5.png"),
+            new GreenfootImage("Walk_left6.png"),
+            new GreenfootImage("Walk_left7.png")
+        }),
+        RIGHT(new GreenfootImage[]{
+            new GreenfootImage("Walk_right0.png"),
+            new GreenfootImage("Walk_right1.png"),
+            new GreenfootImage("Walk_right2.png"),
+            new GreenfootImage("Walk_right3.png"),
+            new GreenfootImage("Walk_right4.png"),
+            new GreenfootImage("Walk_right5.png"),
+            new GreenfootImage("Walk_right6.png"),
+            new GreenfootImage("Walk_right7.png")
+        });
+
+        private GreenfootImage[] playerImages;
+
+        private Direction(GreenfootImage[] playerImages) {
+            this.playerImages = playerImages;
+        }
+    
+        public GreenfootImage[] getPlayerImages() {
+            return playerImages;
+        }
+    }
     
     private MoneyManager moneyManager;
     private DialogManager dialogManager;
@@ -37,6 +84,7 @@ public class Player extends ScrollActor
         counter = 0;
         reloadTime = 32;
         isInDialog = false;
+        playerDirection = Direction.RIGHT;
         selectedOption = -1; // -1 berarti belum memilih
         
         moneyManager = new MoneyManager(1000.0);
@@ -57,27 +105,56 @@ public class Player extends ScrollActor
         }
         
     }    
+    
+    private boolean isMoving(){
+        return !isInDialog && (Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("S") || Greenfoot.isKeyDown("D"));
+    }
 
     //moves around
     public void moveAround(){
-        if (Greenfoot.getMouseInfo() != null) {
-            // flip the character depend on mouse position
-            if (Greenfoot.getMouseInfo().getX() > getX()){
-                setImage(new GreenfootImage("spr_dig_strip13.png"));
-            } else if (Greenfoot.getMouseInfo().getX() < getX()){
-                setImage(new GreenfootImage("spr_dig_strip13_flip.png"));
+        if(Greenfoot.isKeyDown("W")){
+            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
+            playerDirection = Direction.UP;
+        }
+        if(Greenfoot.isKeyDown("A")){
+            getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT, getWorld().getCameraY());
+            playerDirection = Direction.LEFT;
+        }
+        if(Greenfoot.isKeyDown("S")){
+            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT);
+            if (playerDirection == Direction.UP) {
+                if(Greenfoot.isKeyDown("A"))
+                    playerDirection = Direction.LEFT;
+                else {
+                    playerDirection = Direction.RIGHT;
+                }
+                if(Greenfoot.isKeyDown("D"))
+                    playerDirection = Direction.RIGHT;
             }
         }
-        
-        if(Greenfoot.isKeyDown("W"))
-            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
-        if(Greenfoot.isKeyDown("A"))
-            getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT, getWorld().getCameraY());
-        if(Greenfoot.isKeyDown("S"))
-            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT);
-        if(Greenfoot.isKeyDown("D"))
+        if(Greenfoot.isKeyDown("D")){
             getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT, getWorld().getCameraY());
+            playerDirection = Direction.RIGHT;
+        }
+        
+        moveAnimation();
     }   
+    
+    private void moveAnimation(){
+        getImage().scale(100, 100);
+        if (isMoving()) {
+            delayCounter++;
+            if (delayCounter >= animationDelay) {
+                delayCounter = 0;
+                animationIndex = (animationIndex + 1) % playerDirection.getPlayerImages().length;
+                setImage(playerDirection.getPlayerImages()[animationIndex]);
+            }
+        } else {
+            // reset animasi jika player berhenti bergerak
+            animationIndex = 0;
+            setImage(playerDirection.getPlayerImages()[animationIndex]);
+        }
+    }
 
     //checks if collsion with an object
     public void checkCollisionObject(){
