@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=MissionDisplay
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MissionDisplay\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=MissionDisplay()
+comment2.params=
+comment2.target=void\ createDisplay()
+comment3.params=
+comment3.target=void\ updateDisplay()
+comment4.params=
+comment4.target=void\ act()
+comment5.params=text\ maxWidth
+comment5.target=java.util.List\ wrapText(java.lang.String,\ int)
+numComments=6

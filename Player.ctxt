@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\n\ The\ tank\ that\ the\ player\ controls\n\ \n\ @author\ Michael\n\ @version\ 10/6/2014\n
+comment0.text=\r\n\ The\ tank\ that\ the\ player\ controls\r\n\ \r\n\ @author\ Michael\r\n\ @version\ 10/6/2014\r\n
 comment1.params=
 comment1.target=Player()
 comment10.params=

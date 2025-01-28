@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Wallet
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Wallet\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Wallet()
+comment2.params=
+comment2.target=void\ Interact()
+comment3.params=
+comment3.target=boolean\ isCollected()
+comment4.params=
+comment4.target=void\ act()
+numComments=5
