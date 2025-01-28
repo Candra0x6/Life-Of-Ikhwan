@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=DialogManager
-comment0.text=\n\ Write\ a\ description\ of\ class\ DIalogManager\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ DIalogManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=DialogManager()
 comment10.params=imagePath
@@ -13,6 +13,8 @@ comment13.params=
 comment13.target=boolean\ hasDialogs()
 comment14.params=image\ text\ x\ y\ maxWidth
 comment14.target=void\ drawWrappedText(greenfoot.GreenfootImage,\ java.lang.String,\ int,\ int,\ int)
+comment15.params=
+comment15.target=void\ clearDialogs()
 comment2.params=
 comment2.target=int\ getCurrentDialogId()
 comment3.params=
@@ -29,4 +31,4 @@ comment8.params=
 comment8.target=void\ setupDialogBoxImage()
 comment9.params=image
 comment9.target=void\ draw(greenfoot.GreenfootImage)
-numComments=15
+numComments=16

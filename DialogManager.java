@@ -199,4 +199,10 @@ public class DialogManager extends ScrollActor
         }
         image.drawString(line.toString(), x, currentY);
     }
+    public void clearDialogs() {
+    dialogLines.clear();
+    currentDialogId = 0;
+    selectedChoice = 0;
+    isDialogActive = false;
+}
 }
