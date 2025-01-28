@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Box extends ScrollActor
+public class Box extends ScrollActor implements IInteractable
 {
-     protected DialogManager dialogManager;
+    protected DialogManager dialogManager;
     protected boolean isInteracting;
     protected Player player;
 
@@ -18,7 +18,7 @@ public class Box extends ScrollActor
         setupDialogs();
     }
 
-    public void interact() { // Renamed to lowercase
+    public void Interact() {
         player = (Player) getOneIntersectingObject(Player.class);
         startDialog();
     }

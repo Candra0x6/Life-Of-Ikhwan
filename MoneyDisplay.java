@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MoneyDisplay extends ScrollActor
 {
-        private MoneyManager moneyManager;
+    private MoneyManager moneyManager;
     
     public MoneyDisplay(MoneyManager moneyManager) {
         this.moneyManager = moneyManager;
@@ -17,7 +17,6 @@ public class MoneyDisplay extends ScrollActor
     
     public void act() {
         updateDisplay();
-        
     }
     
     public void updateDisplay() {
@@ -28,6 +27,5 @@ public class MoneyDisplay extends ScrollActor
         image.drawString("Saldo: Rp " + moneyManager.getBalance(), 10, 30);
         setImage(image);
         setLocation(300, 300 + 266);
-
     }
 }

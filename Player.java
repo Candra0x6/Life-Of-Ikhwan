@@ -15,14 +15,15 @@ public class Player extends ScrollActor
     private int counter;
     private int reloadTime;
     private int score = 0;
-    private boolean isInDialog;
-    private NPC currentNPC;
     private int moveSpeed = 3;
+    private boolean isInDialog;
+    
     private MoneyManager moneyManager;
     private DialogManager dialogManager;
     private ZakatBox zakatBox;
     private ZakatInteraction zakatInteraction;
     private Box box;
+    
     private int selectedOption; // Opsi yang dipilih oleh pemain
 
     
@@ -36,14 +37,12 @@ public class Player extends ScrollActor
         counter = 0;
         reloadTime = 32;
         isInDialog = false;
-        currentNPC = null;
-        moneyManager = new MoneyManager(1000.0);
-         dialogManager = new DialogManager();  // Create this first
-    zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
-        box = new Box();
-           isInDialog = false;
         selectedOption = -1; // -1 berarti belum memilih
         
+        moneyManager = new MoneyManager(1000.0);
+        dialogManager = new DialogManager();  // Create this first
+        zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
+        box = new Box();
     }
     
 
@@ -53,9 +52,8 @@ public class Player extends ScrollActor
         if(!isInDialog){
             moveAround();
             checkCollisionObject();
-            checkNPCInteraction();
-         checkInteraction(); // Cek interaksi dengan objek lain
-        handleInput();
+            checkInteraction(); // Cek interaksi dengan objek lain
+            handleInput();
         }
         
     }    
@@ -91,16 +89,15 @@ public class Player extends ScrollActor
                 getWorld().moveCamera(MOVE_AMOUNT/2);
         }  
     }
-
     
-     private void checkNPCInteraction() {
+     private void checkInteraction() {
         // Cek Interactable dalam radius interaksi
         List<IInteractable> nearbyInteractables = getObjectsInRange(50, IInteractable.class);
         
         if (!nearbyInteractables.isEmpty() && Greenfoot.isKeyDown("e")) {
             // Ambil Interactable terdekat
             IInteractable obj = nearbyInteractables.get(0);
-            obj.Interact();
+            obj.Interact(); // Menjalankan method Interact dari obj tersebut
         }
     }
     
@@ -110,17 +107,6 @@ public class Player extends ScrollActor
     
     public boolean isInDialog() {
         return isInDialog;
-    }
-  
-   
-    // Method untuk mengecek interaksi dengan objek lain
-    private void checkInteraction() {
-        if (Greenfoot.isKeyDown("e")) { // Contoh: Interaksi dengan tombol spasi
-            Box box = (Box) getOneIntersectingObject(Box.class);
-            if (box != null) {
-                box.interact(); // Memulai interaksi dengan Box
-            }
-        }
     }
 
     // Method untuk menangani input pemain (misalnya, memilih opsi dialog)
