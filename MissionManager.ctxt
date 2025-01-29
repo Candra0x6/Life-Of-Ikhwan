@@ -1,14 +1,21 @@
 #BlueJ class context
 comment0.target=MissionManager
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MissionManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
+comment1.target=MissionManager()
 comment2.params=
-comment2.target=MissionManager()
+comment2.target=MissionManager\ getInstance()
 comment3.params=
-comment3.target=MissionManager\ getInstance()
+comment3.target=java.util.List\ getMissions()
 comment4.params=mission
 comment4.target=void\ addMission(Mission)
 comment5.params=
-comment5.target=java.util.List\ getMissions()
-numComments=6
+comment5.target=void\ updateMissions()
+comment6.params=
+comment6.target=java.util.List\ getActiveMissions()
+comment7.params=
+comment7.target=java.util.List\ getCompletedMissions()
+comment8.params=
+comment8.target=int\ getCompletedMissionCount()
+comment9.params=
+comment9.target=void\ act()
+numComments=10

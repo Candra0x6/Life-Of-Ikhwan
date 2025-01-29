@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Zero
+comment1.params=moneyManager
+comment1.target=Zero(MoneyManager)
+comment2.params=
+comment2.target=void\ setupDialogs()
+comment3.params=
+comment3.target=void\ updateDialogForSuccess()
+comment4.params=
+comment4.target=void\ act()
+comment5.params=
+comment5.target=ToleranceMission\ getToleranceMission()
+numComments=6

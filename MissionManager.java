@@ -1,28 +1,14 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Write a description of class MissionManager here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class MissionManager extends ScrollActor
-{
-    /**
-     * Act - do whatever the MissionManager wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-       private static MissionManager instance;
+public class MissionManager extends ScrollActor {
+    private static MissionManager instance;
     private List<Mission> missions;
-    public void act()
-    {
-        // Add your action code here.
-    }
+    private List<Mission> completedMissions;
+    
     private MissionManager() {
         missions = new ArrayList<>();
+        completedMissions = new ArrayList<>();
     }
     
     public static MissionManager getInstance() {
@@ -32,11 +18,42 @@ public class MissionManager extends ScrollActor
         return instance;
     }
     
+    public List<Mission> getMissions() {
+        return missions;
+    }
+    
     public void addMission(Mission mission) {
         missions.add(mission);
     }
     
-    public List<Mission> getMissions() {
-        return missions;
+    public void updateMissions() {
+        for (Mission mission : missions) {
+            if (mission.isCompleted() && !completedMissions.contains(mission)) {
+                completedMissions.add(mission);
+            }
+        }
+    }
+    
+    public List<Mission> getActiveMissions() {
+        List<Mission> activeMissions = new ArrayList<>();
+        for (Mission mission : missions) {
+            if (!mission.isCompleted()) {
+                activeMissions.add(mission);
+            }
+        }
+        return activeMissions;
+    }
+    
+    public List<Mission> getCompletedMissions() {
+        return completedMissions;
+    }
+    
+    public int getCompletedMissionCount() {
+        return completedMissions.size();
+    }
+    
+    @Override
+    public void act() {
+        updateMissions();
     }
 }

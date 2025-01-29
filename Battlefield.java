@@ -16,20 +16,25 @@ public class Battlefield extends ScrollWorld
     {    
         super(1280, 720, 1, 2500, 2500);
         Greenfoot.setSpeed(50);
-        setPaintOrder( BorderForest.class, Budi.class, TreeTop.class, Player.class, MoneyDisplay.class, ZakatBox.class, MissionDisplay.class);
+        setPaintOrder( BorderForest.class, Budi.class, TreeTop.class, Player.class, MoneyDisplay.class, ZakatBox.class, MissionDisplay.class, Zero.class);
         int numTrees = 2;
-        
+        MoneyManager moneyManager = new MoneyManager(1000.0);
+
         addObject(new BorderForest(), 1250, 1250);
-        ZakatBox zakatBox= new ZakatBox();
+        ZakatBox zakatBox= new ZakatBox(moneyManager);
         addObject(zakatBox, 1000, 900); // Tentukan posisi kotak zakat
         
         //adds mach
-            Budi budi = new Budi();
-    WalletMission mission = budi.getWalletMission();
-Wallet wallet = mission.getWallet();
+    
+        Budi budi = new Budi();
+        Zero zero = new Zero(moneyManager);
+        addObject(zero, 1400, 600);
+        WalletMission mission = budi.getWalletMission();
+        MissionManager.getInstance().addMission(zero.getToleranceMission());
+        Wallet wallet = mission.getWallet();
         addObject(budi, 1200, 900);
 
-addObject(wallet, 1200, 600); // Set appropriate coordinates
+        addObject(wallet, 1200, 600); // Set appropriate coordinates
         Home home = new Home();        
         addObject(home, 1000, 600);
       
