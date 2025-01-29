@@ -20,7 +20,8 @@ public class Player extends ScrollActor
     private int animationDelay = 5; // Ubah nilai ini untuk mengatur kecepatan animasi
     private int delayCounter = 0;
     private boolean isInDialog;
-    
+    private boolean canMove = true;
+
     private Direction playerDirection;
     private enum Direction {
         UP(new GreenfootImage[]{
@@ -73,8 +74,6 @@ public class Player extends ScrollActor
     
     private int selectedOption; // Opsi yang dipilih oleh pemain
 
-    
-
     private static final int MOVE_AMOUNT = 3;
 
     //constructer that initialize variables
@@ -97,8 +96,10 @@ public class Player extends ScrollActor
     //act method
     public void act() 
     {
-        if(!isInDialog){
-            moveAround();
+        if(!isInDialog || canMove){
+                moveAround();    
+            
+            
             checkCollisionObject();
             checkInteraction(); // Cek interaksi dengan objek lain
             handleInput();
@@ -205,6 +206,9 @@ public class Player extends ScrollActor
         return selectedOption;
     }
 
+    public void setCanMove(boolean canMove) {
+        this.canMove = canMove;
+    }
     // Method untuk mengecek apakah pemain sedang dalam dialog
    
     public MoneyManager getMoneyManager() {

@@ -58,11 +58,10 @@ public class Box extends ScrollActor implements IInteractable
         }
     }
     protected void setupDialogs() {
-        // Contoh setup dialog
         dialogManager.addDialog(new DialogLine(
-            "Halo! Apa yang bisa saya bantu?",
-            new String[]{"Beli sesuatu", "Tanya cuaca", "Sampai jumpa"},
-            new int[]{1, 2, 3},
+            "Dialog Kosong",
+            new String[]{},
+            new int[]{},
             false
         ));
       

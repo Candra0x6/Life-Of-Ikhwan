@@ -16,10 +16,11 @@ public class Battlefield extends ScrollWorld
     {    
         super(1280, 720, 1, 2500, 2500);
         Greenfoot.setSpeed(50);
-        setPaintOrder( BorderForest.class, Budi.class, TreeTop.class, Player.class, MoneyDisplay.class, ZakatBox.class, MissionDisplay.class, Zero.class);
+        setPaintOrder( MissionDisplay.class, TextInfo.class,MoneyDisplay.class, BorderForest.class,  Player.class,PrayerMat.class, Budi.class, TreeTop.class, ZakatBox.class, Zero.class);
         int numTrees = 2;
         MoneyManager moneyManager = new MoneyManager(1000.0);
-
+        Player player = new Player();
+        addCameraFollower(player, 0, 0);
         addObject(new BorderForest(), 1250, 1250);
         ZakatBox zakatBox= new ZakatBox(moneyManager);
         addObject(zakatBox, 1000, 900); // Tentukan posisi kotak zakat
@@ -28,9 +29,21 @@ public class Battlefield extends ScrollWorld
     
         Budi budi = new Budi();
         Zero zero = new Zero(moneyManager);
+        PrayerMission prayerMission = new PrayerMission(player);
+        addObject(prayerMission, 0, 0); // Posisi tidak penting jika tidak perlu ditampilkan
+        PrayerMat prayerMat = new PrayerMat(prayerMission);
+        addObject(prayerMat, 1200, 1000);
+
+        MoneyDisplay moneyDisplay = new MoneyDisplay(zakatBox.getMoneyManager());
+        addObject(moneyDisplay, 0, 0);
+        MissionDisplay missionDisplay = new MissionDisplay();
+        addObject(missionDisplay, 0, 0);
+        MissionManager.getInstance().addMission(budi.getWalletMission());
+
         addObject(zero, 1400, 600);
         WalletMission mission = budi.getWalletMission();
         MissionManager.getInstance().addMission(zero.getToleranceMission());
+        MissionManager.getInstance().addMission(prayerMission);
         Wallet wallet = mission.getWallet();
         addObject(budi, 1200, 900);
 
@@ -46,14 +59,8 @@ public class Battlefield extends ScrollWorld
             addObject(new TreeTruck(), randX, randY);
             addObject(new TreeTop(), randX, randY - 10);
         }
-          Player player = new Player();
-        addCameraFollower(player, 0, 0);
+          
 
-         MoneyDisplay moneyDisplay = new MoneyDisplay(zakatBox.getMoneyManager());
-        addObject(moneyDisplay, 0, 0);
-       MissionDisplay missionDisplay = new MissionDisplay();
-        addObject(missionDisplay, 0, 0);
-        MissionManager.getInstance().addMission(budi.getWalletMission());
 
     }
 }

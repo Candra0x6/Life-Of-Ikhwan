@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=PrayerMission
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ PrayerMission\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=player
+comment1.target=PrayerMission(Player)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ startPrayer()
+comment4.params=
+comment4.target=void\ updatePrayerStatus()
+comment5.params=
+comment5.target=void\ updatePrayerText()
+comment6.params=text
+comment6.target=void\ showTextAbovePlayer(java.lang.String)
+comment7.params=
+comment7.target=void\ completePrayer()
+comment8.params=
+comment8.target=boolean\ isPraying()
+numComments=9
