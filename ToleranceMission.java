@@ -2,9 +2,10 @@ public class ToleranceMission extends Mission {
     private Zero zero;
     private boolean rewardGiven;
     private Player player;
-    
+
     public ToleranceMission(Zero zero) {
         super("Misi Toleransi: Bantu menyelesaikan konflik antar umat");
+        this.id = 3;
         this.zero = zero;
         this.rewardGiven = false;
     }
@@ -15,11 +16,11 @@ public class ToleranceMission extends Mission {
             update();
         }
     }
-    
+
     public void update() {
 
         if (!isCompleted && !rewardGiven) {
-            
+
             complete();
             zero.updateDialogForSuccess();
         }
