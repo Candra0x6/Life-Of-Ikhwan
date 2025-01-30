@@ -19,7 +19,7 @@ public class PrayerMat extends Box
     }
      public void act() {
             if (!prayerMission.isPraying() && isInteracting) {
-              
+                  
                 prayerMission.startPrayer();
             }
         }

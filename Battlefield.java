@@ -16,7 +16,7 @@ public class Battlefield extends ScrollWorld
     {    
         super(1280, 720, 1, 2500, 2500);
         Greenfoot.setSpeed(50);
-        setPaintOrder( MissionDisplay.class, TextInfo.class,MoneyDisplay.class, BorderForest.class,  Player.class,PrayerMat.class, Budi.class, TreeTop.class, ZakatBox.class, Zero.class);
+        setPaintOrder( MissionDisplay.class, TextInfo.class,MoneyDisplay.class, BorderForest.class, TreeTop.class, Player.class,PlayerHome.class, PrayerMat.class, Budi.class, ZakatBox.class, Zero.class);
         int numTrees = 2;
         MoneyManager moneyManager = new MoneyManager(1000.0);
         Player player = new Player();
@@ -38,19 +38,26 @@ public class Battlefield extends ScrollWorld
         addObject(moneyDisplay, 0, 0);
         MissionDisplay missionDisplay = new MissionDisplay();
         addObject(missionDisplay, 0, 0);
-        MissionManager.getInstance().addMission(budi.getWalletMission());
+        
 
         addObject(zero, 1400, 600);
         WalletMission mission = budi.getWalletMission();
+        
+        MissionManager.getInstance().addMission(budi.getWalletMission());
         MissionManager.getInstance().addMission(zero.getToleranceMission());
         MissionManager.getInstance().addMission(prayerMission);
+        
+        
         Wallet wallet = mission.getWallet();
         addObject(budi, 1200, 900);
 
         addObject(wallet, 1200, 600); // Set appropriate coordinates
-        Home home = new Home();        
-        addObject(home, 1000, 600);
+ 
       
+        PlayerHome playerHome = new PlayerHome();
+        PlayerHomeTruck playerHomeTruck = new PlayerHomeTruck();
+        addObject(playerHome, 1800, 600);
+        addObject(playerHomeTruck, 1800, 550);
         //adds trees;
         Random rand = new Random();
         for(int i = 0; i<numTrees; i++){
