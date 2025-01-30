@@ -15,10 +15,9 @@ public class PrayerMission extends Mission {
     private static final int PRAYER_DURATION = 600; // 10 seconds (60 frames per second)
     private static final int TEXT_DISPLAY_DURATION = 60; // 1 second for completion text
 
-    public PrayerMission(Player player) {
+    public PrayerMission() {
         super("Misi Salat: Lakukan simulasi salat");
         this.id = 2;
-        this.player = player;
         this.prayerTimer = 0;
         this.isPraying = false;
         this.textDisplayed = false;
@@ -31,7 +30,8 @@ public class PrayerMission extends Mission {
         }
     }
 
-    public void startPrayer() {
+    public void startPrayer(Player player) {
+        this.player = player;
         if (!isPraying && !isCompleted) {
             isPraying = true;
             textDisplayed = true;
