@@ -36,7 +36,7 @@ public class PrayerMission extends Mission {
             isPraying = true;
             textDisplayed = true;
             prayerTimer = 0;
-            player.setCanMove(false);
+            player.setCanMove(true);
             updatePrayerText();
         }
     }
@@ -49,7 +49,7 @@ public class PrayerMission extends Mission {
             updatePrayerText();
         } else if (prayerTimer == PRAYER_DURATION) {
             // Show completion text when prayer duration is reached
-            player.setCanMove(true);
+            player.setCanMove(false);
             showTextAbovePlayer("Selesai salat!");
 
         } else if (prayerTimer >= PRAYER_DURATION + TEXT_DISPLAY_DURATION) {

@@ -86,6 +86,11 @@ public class Player extends ScrollActor {
         if (!isInDialog || canMove) {
             moveAround();
 
+    //act method
+    public void act() {
+        if (!isInDialog) {
+            moveAround();
+
             checkCollisionObject();
             checkInteraction(); // Cek interaksi dengan objek lain
             handleInput();
@@ -152,6 +157,21 @@ public class Player extends ScrollActor {
                 getWorld().moveCamera(-MOVE_AMOUNT);
             else if (Greenfoot.isKeyDown("S"))
                 getWorld().moveCamera(MOVE_AMOUNT / 2);
+        }
+
+    // checks if collsion with an object
+    public void checkCollisionObject() {
+        Actor obj = getOneIntersectingObject(Objects.class);
+        if (obj != null) {
+            if (Greenfoot.isKeyDown("W"))
+                getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT + 1);
+            else if (Greenfoot.isKeyDown("S"))
+                getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT - 1);
+            else if (Greenfoot.isKeyDown("D"))
+                getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT - 1, getWorld().getCameraY());
+            else if (Greenfoot.isKeyDown("A"))
+                getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT + 1, getWorld().getCameraY());
+
         }
     }
 
