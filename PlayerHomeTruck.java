@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerHomeTruck extends Objects
+public class PlayerHomeTruck extends Objects implements IInteractable
 {
     /**
      * Act - do whatever the PlayerHomeTruck wants to do. This method is called whenever
@@ -15,8 +15,7 @@ public class PlayerHomeTruck extends Objects
     public PlayerHomeTruck(){
         getImage().scale(150, 200);
     }
-    public void act()
-    {
-        // Add your action code here.
+    public void Interact() {
+        GameManager.getInstance().changeWorld(GameManager.WorldState.INDOOR, 700, 500);
     }
 }

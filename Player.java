@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
@@ -7,9 +7,8 @@ import java.util.List;
  * @author Michael
  * @version 10/6/2014
  */
-public class Player extends ScrollActor
-{
-    //creates variables
+public class Player extends ScrollActor {
+    // creates variables
     private int myHealth;
     private int mySpeed;
     private int counter;
@@ -23,36 +22,37 @@ public class Player extends ScrollActor
     private boolean canMove = true;
 
     private Direction playerDirection;
+
     private enum Direction {
-        UP(new GreenfootImage[]{
-            new GreenfootImage("Walk_up0.png"),
-            new GreenfootImage("Walk_up1.png"),
-            new GreenfootImage("Walk_up2.png"),
-            new GreenfootImage("Walk_up3.png"),
-            new GreenfootImage("Walk_up4.png"),
-            new GreenfootImage("Walk_up5.png"),
-            new GreenfootImage("Walk_up6.png"),
-            new GreenfootImage("Walk_up7.png")
+        UP(new GreenfootImage[] {
+                new GreenfootImage("Walk_up0.png"),
+                new GreenfootImage("Walk_up1.png"),
+                new GreenfootImage("Walk_up2.png"),
+                new GreenfootImage("Walk_up3.png"),
+                new GreenfootImage("Walk_up4.png"),
+                new GreenfootImage("Walk_up5.png"),
+                new GreenfootImage("Walk_up6.png"),
+                new GreenfootImage("Walk_up7.png")
         }),
-        LEFT(new GreenfootImage[]{
-            new GreenfootImage("Walk_left0.png"),
-            new GreenfootImage("Walk_left1.png"),
-            new GreenfootImage("Walk_left2.png"),
-            new GreenfootImage("Walk_left3.png"),
-            new GreenfootImage("Walk_left4.png"),
-            new GreenfootImage("Walk_left5.png"),
-            new GreenfootImage("Walk_left6.png"),
-            new GreenfootImage("Walk_left7.png")
+        LEFT(new GreenfootImage[] {
+                new GreenfootImage("Walk_left0.png"),
+                new GreenfootImage("Walk_left1.png"),
+                new GreenfootImage("Walk_left2.png"),
+                new GreenfootImage("Walk_left3.png"),
+                new GreenfootImage("Walk_left4.png"),
+                new GreenfootImage("Walk_left5.png"),
+                new GreenfootImage("Walk_left6.png"),
+                new GreenfootImage("Walk_left7.png")
         }),
-        RIGHT(new GreenfootImage[]{
-            new GreenfootImage("Walk_right0.png"),
-            new GreenfootImage("Walk_right1.png"),
-            new GreenfootImage("Walk_right2.png"),
-            new GreenfootImage("Walk_right3.png"),
-            new GreenfootImage("Walk_right4.png"),
-            new GreenfootImage("Walk_right5.png"),
-            new GreenfootImage("Walk_right6.png"),
-            new GreenfootImage("Walk_right7.png")
+        RIGHT(new GreenfootImage[] {
+                new GreenfootImage("Walk_right0.png"),
+                new GreenfootImage("Walk_right1.png"),
+                new GreenfootImage("Walk_right2.png"),
+                new GreenfootImage("Walk_right3.png"),
+                new GreenfootImage("Walk_right4.png"),
+                new GreenfootImage("Walk_right5.png"),
+                new GreenfootImage("Walk_right6.png"),
+                new GreenfootImage("Walk_right7.png")
         });
 
         private GreenfootImage[] playerImages;
@@ -60,24 +60,18 @@ public class Player extends ScrollActor
         private Direction(GreenfootImage[] playerImages) {
             this.playerImages = playerImages;
         }
-    
+
         public GreenfootImage[] getPlayerImages() {
             return playerImages;
         }
     }
-    
-    private MoneyManager moneyManager;
-    private DialogManager dialogManager;
-    private ZakatBox zakatBox;
-    private ZakatInteraction zakatInteraction;
-    private Box box;
-    
+
     private int selectedOption; // Opsi yang dipilih oleh pemain
 
     private static final int MOVE_AMOUNT = 3;
 
-    //constructer that initialize variables
-    public Player(){
+    // constructer that initialize variables
+    public Player() {
         myHealth = 1000;
         mySpeed = 4;
         counter = 0;
@@ -85,62 +79,56 @@ public class Player extends ScrollActor
         isInDialog = false;
         playerDirection = Direction.RIGHT;
         selectedOption = -1; // -1 berarti belum memilih
-        
-        moneyManager = new MoneyManager(1000.0);
-        dialogManager = new DialogManager();  // Create this first
-        zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
-        box = new Box();
     }
-    
 
-    //act method
-    public void act() 
-    {
-        if(!isInDialog){
-                moveAround();    
-    
+    // act method
+    public void act() {
+        if (!isInDialog) {
+            moveAround();
+
             checkCollisionObject();
             checkInteraction(); // Cek interaksi dengan objek lain
             handleInput();
         }
-        
-    }    
-    
-    private boolean isMoving(){
-        return !isInDialog && (Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("S") || Greenfoot.isKeyDown("D"));
+
     }
 
-    //moves around
-    public void moveAround(){
-        if(Greenfoot.isKeyDown("W")){
+    private boolean isMoving() {
+        return !isInDialog && (Greenfoot.isKeyDown("W") || Greenfoot.isKeyDown("A") || Greenfoot.isKeyDown("S")
+                || Greenfoot.isKeyDown("D"));
+    }
+
+    // moves around
+    public void moveAround() {
+        if (Greenfoot.isKeyDown("W")) {
             getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
             playerDirection = Direction.UP;
         }
-        if(Greenfoot.isKeyDown("A")){
+        if (Greenfoot.isKeyDown("A")) {
             getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT, getWorld().getCameraY());
             playerDirection = Direction.LEFT;
         }
-        if(Greenfoot.isKeyDown("S")){
+        if (Greenfoot.isKeyDown("S")) {
             getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT);
             if (playerDirection == Direction.UP) {
-                if(Greenfoot.isKeyDown("A"))
+                if (Greenfoot.isKeyDown("A"))
                     playerDirection = Direction.LEFT;
                 else {
                     playerDirection = Direction.RIGHT;
                 }
-                if(Greenfoot.isKeyDown("D"))
+                if (Greenfoot.isKeyDown("D"))
                     playerDirection = Direction.RIGHT;
             }
         }
-        if(Greenfoot.isKeyDown("D")){
+        if (Greenfoot.isKeyDown("D")) {
             getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT, getWorld().getCameraY());
             playerDirection = Direction.RIGHT;
         }
-        
+
         moveAnimation();
-    }   
-    
-    private void moveAnimation(){
+    }
+
+    private void moveAnimation() {
         getImage().scale(100, 100);
         if (isMoving()) {
             delayCounter++;
@@ -156,37 +144,42 @@ public class Player extends ScrollActor
         }
     }
 
-    //checks if collsion with an object
-    public void checkCollisionObject(){
-        Actor obj = getOneIntersectingObject(Objects.class);                 
-        if(obj != null){
-            if(Greenfoot.isKeyDown("W"))
-            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT +1);
-            else if(Greenfoot.isKeyDown("S"))
-            getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT -1);
-            else if(Greenfoot.isKeyDown("D"))
-            getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT -1, getWorld().getCameraY());
-            else if(Greenfoot.isKeyDown("A"))
-            getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT +1, getWorld().getCameraY());
+    // checks if collsion with an object
+    public void checkCollisionObject() {
+        Actor obj = getOneIntersectingObject(Objects.class);
+        if (obj != null) {
+            if (-50 >= obj.getY() - getY() || obj.getY() - getY() >= 50) {
+                if (obj.getY() < getY())
+                    getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT + 1);
+                else
+                    getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT - 1);
+            }
+            if (-50 >= obj.getX() - getX() || obj.getX() - getX() >= 50) {
+                if (obj.getX() > getX())
+                    getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT - 1, getWorld().getCameraY());
+                else
+                    getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT + 1, getWorld().getCameraY());
+            }
 
-        }  
+        }
     }
-    
-     private void checkInteraction() {
+
+    private void checkInteraction() {
         // Cek Interactable dalam radius interaksi
         List<IInteractable> nearbyInteractables = getObjectsInRange(50, IInteractable.class);
-        
+
         if (!nearbyInteractables.isEmpty() && Greenfoot.isKeyDown("e")) {
             // Ambil Interactable terdekat
             IInteractable obj = nearbyInteractables.get(0);
             obj.Interact(); // Menjalankan method Interact dari obj tersebut
+            Greenfoot.delay(10); // Mencegah input berulang
         }
     }
-    
-    public void setIsInDialog(boolean bool){
+
+    public void setIsInDialog(boolean bool) {
         isInDialog = bool;
     }
-    
+
     public boolean isInDialog() {
         return isInDialog;
     }
@@ -204,7 +197,6 @@ public class Player extends ScrollActor
         }
     }
 
-
     // Method untuk mendapatkan opsi yang dipilih
     public int getSelectedOption() {
         return selectedOption;
@@ -214,12 +206,4 @@ public class Player extends ScrollActor
         this.canMove = canMove;
     }
     // Method untuk mengecek apakah pemain sedang dalam dialog
-   
-    public MoneyManager getMoneyManager() {
-        return moneyManager;
-    }
-
-    public DialogManager getDialogManager() {
-        return dialogManager;
-    }
 }
