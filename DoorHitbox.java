@@ -7,8 +7,8 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class DoorHitbox extends Door {
-    DoorHitbox(GameManager.WorldState world, int xDestination, int yDestination) {
-        super(world, xDestination, yDestination);
+    DoorHitbox(GameManager.WorldState world, int xDestination, int yDestination, boolean needPlayer) {
+        super(world, xDestination, yDestination, needPlayer);
         getImage().clear();
     }
 }
