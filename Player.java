@@ -80,8 +80,8 @@ public class Player extends ScrollActor {
         playerDirection = Direction.RIGHT;
         selectedOption = -1; // -1 berarti belum memilih
     }
-    
-    //act method
+
+    // act method
     public void act() {
         if (!isInDialog) {
             moveAround();
@@ -148,14 +148,18 @@ public class Player extends ScrollActor {
     public void checkCollisionObject() {
         Actor obj = getOneIntersectingObject(Objects.class);
         if (obj != null) {
-            if (Greenfoot.isKeyDown("W"))
-                getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT + 1);
-            else if (Greenfoot.isKeyDown("S"))
-                getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT - 1);
-            else if (Greenfoot.isKeyDown("D"))
-                getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT - 1, getWorld().getCameraY());
-            else if (Greenfoot.isKeyDown("A"))
-                getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT + 1, getWorld().getCameraY());
+            if (-50 >= obj.getY() - getY() || obj.getY() - getY() >= 50) {
+                if (obj.getY() < getY())
+                    getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() + MOVE_AMOUNT + 1);
+                else
+                    getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT - 1);
+            }
+            if (-50 >= obj.getX() - getX() || obj.getX() - getX() >= 50) {
+                if (obj.getX() > getX())
+                    getWorld().setCameraLocation(getWorld().getCameraX() - MOVE_AMOUNT - 1, getWorld().getCameraY());
+                else
+                    getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT + 1, getWorld().getCameraY());
+            }
 
         }
     }

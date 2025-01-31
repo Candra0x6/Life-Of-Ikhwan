@@ -71,7 +71,7 @@ public class Battlefield extends ScrollWorld {
         public void act(){ 
             if(doorToHome == null && GameManager.WorldState.INDOOR != null) {
                 doorToHome = new DoorHitbox(GameManager.WorldState.INDOOR, 700, 500);
-                addObject(doorToHome, 1800, 650);
+                addObject(doorToHome, 1800, 680);
             }
         }
 }
