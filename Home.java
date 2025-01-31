@@ -8,6 +8,6 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Home extends ScrollActor implements IInteractable {
     public void Interact() {
-        GameManager.getInstance().changeWorld(GameManager.WorldState.INDOOR, 700, 500);
+        GameManager.getInstance().changeWorld(GameManager.WorldState.INDOOR, 700, 500, true);
     }
 }

@@ -26,6 +26,6 @@ public class MoneyDisplay extends ScrollActor
         image.setColor(Color.BLACK);
         image.drawString("Saldo: Rp " + moneyManager.getBalance(), 10, 30);
         setImage(image);
-        setLocation(300, 300 + 266);
+        setLocation(150, 300 - 266);
     }
 }

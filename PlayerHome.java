@@ -8,12 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PlayerHome extends Home
 {
-    /**
-     * Act - do whatever the PlayerHome wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public PlayerHome (){
-        getImage().scale(400, 400);
+        getImage().scale(300, 300);
     }
     public void act()
     {
