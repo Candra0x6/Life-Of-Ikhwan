@@ -12,14 +12,15 @@ public class GameManager {
     public enum WorldState {
         BATTLEFIELD(new Battlefield()),
         INDOOR(new InsideHome());
-        
+
         public ScrollWorld world;
-        WorldState(ScrollWorld world){
+
+        WorldState(ScrollWorld world) {
             this.world = world;
         }
     }
 
-    private WorldState worldState;
+    public WorldState worldState;
 
     private MoneyManager moneyManager;
     private DialogManager dialogManager;
@@ -48,13 +49,13 @@ public class GameManager {
         return instance;
     }
 
-    public void changeWorld(WorldState world, int x, int y) {
-        worldState = world;
-        
+    public void changeWorld(WorldState worldDest, int x, int y) {
+        worldState = worldDest;
+
         Greenfoot.setWorld(worldState.world);
         worldState.world.addCameraFollower(player, 0, 0);
         worldState.world.setCameraLocation(x, y);
-        }
+    }
 
     public MoneyManager getMoneyManager() {
         return moneyManager;

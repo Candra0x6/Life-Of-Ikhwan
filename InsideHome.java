@@ -14,6 +14,6 @@ public class InsideHome extends ScrollWorld {
     public InsideHome() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1, 1500, 1000);
-        addObject(new Door(GameManager.WorldState.BATTLEFIELD), 700, 500);
+        addObject(new Door(GameManager.WorldState.BATTLEFIELD, 1800, 650), 700, 500);
     }
 }

@@ -80,12 +80,7 @@ public class Player extends ScrollActor {
         playerDirection = Direction.RIGHT;
         selectedOption = -1; // -1 berarti belum memilih
     }
-
-    // act method
-    public void act() {
-        if (!isInDialog || canMove) {
-            moveAround();
-
+    
     //act method
     public void act() {
         if (!isInDialog) {
@@ -148,16 +143,6 @@ public class Player extends ScrollActor {
             setImage(playerDirection.getPlayerImages()[animationIndex]);
         }
     }
-
-    // checks if collsion with an object
-    public void checkCollisionObject() {
-        Actor obj = getOneIntersectingObject(Objects.class);
-        if (obj != null) {
-            if (Greenfoot.isKeyDown("W"))
-                getWorld().moveCamera(-MOVE_AMOUNT);
-            else if (Greenfoot.isKeyDown("S"))
-                getWorld().moveCamera(MOVE_AMOUNT / 2);
-        }
 
     // checks if collsion with an object
     public void checkCollisionObject() {

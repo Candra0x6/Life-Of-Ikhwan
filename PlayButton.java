@@ -15,7 +15,7 @@ public class PlayButton extends Actor {
      */
     public void act() {
         if (Greenfoot.mouseClicked(this))
-            GameManager.getInstance().changeWorld(GameManager.WorldState.BATTLEFIELD, 1000, 600);
+            GameManager.getInstance().changeWorld(GameManager.WorldState.BATTLEFIELD, 1800, 800);
         backgroundSound = new GreenfootSound("backsound.mp3");
         backgroundSound.setVolume(50); //
 
