@@ -11,7 +11,8 @@ public class GameManager {
 
     public enum WorldState {
         BATTLEFIELD(new Battlefield()),
-        INDOOR(new InsideHome());
+        INDOOR(new InsideHome()),
+        VILLAGE(new Village());
 
         public ScrollWorld world;
 
@@ -47,10 +48,12 @@ public class GameManager {
         return instance;
     }
 
-    public void changeWorld(WorldState worldDest, int x, int y) {
+    public void changeWorld(WorldState worldDest, int x, int y, boolean hasPlayer) {
         worldState = worldDest;
 
         Greenfoot.setWorld(worldState.world);
+        if (!hasPlayer)
+            return;
         worldState.world.addCameraFollower(player, 0, 0);
         worldState.world.setCameraLocation(x, y);
     }

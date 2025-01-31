@@ -83,7 +83,7 @@ public class Battlefield extends ScrollWorld {
         // GameManager hasn't executed if it placed in constructor
         public void act(){ 
             if(doorToHome == null && GameManager.WorldState.INDOOR != null) {
-                doorToHome = new DoorHitbox(GameManager.WorldState.INDOOR, 700, 500);
+                doorToHome = new DoorHitbox(GameManager.WorldState.INDOOR, 700, 500, true);
                 addObject(doorToHome, 1800, 680);
             }
         }

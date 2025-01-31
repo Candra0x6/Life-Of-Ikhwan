@@ -82,6 +82,7 @@ public class Player extends ScrollActor {
 
     // act method
     public void act() {
+        System.out.println("Player X: " + getGlobalX() + ", Player Y: " + getGlobalY());
         if (!isInDialog) {
             moveAround();
             checkCollisionObject();
@@ -98,6 +99,34 @@ public class Player extends ScrollActor {
 
     // moves around
     public void moveAround() {
+        if (getWorld() instanceof ScrollWorld) {
+            scrollMovement();
+        } else {
+            fixedMovement();
+        }
+        moveAnimation();
+    }
+
+    void fixedMovement() {
+        if (Greenfoot.isKeyDown("W")) {
+            setLocation(getX(), getY() + MOVE_AMOUNT);
+            playerDirection = Direction.UP;
+        }
+        if (Greenfoot.isKeyDown("A")) {
+            setLocation(getX() + MOVE_AMOUNT, getY());
+            playerDirection = Direction.LEFT;
+        }
+        if (Greenfoot.isKeyDown("S")) {
+            setLocation(getX(), getY() - MOVE_AMOUNT);
+            playerDirection = Direction.RIGHT;
+        }
+        if (Greenfoot.isKeyDown("D")) {
+            setLocation(getX() - MOVE_AMOUNT, getY());
+            playerDirection = Direction.RIGHT;
+        }
+    }
+
+    void scrollMovement() {
         if (Greenfoot.isKeyDown("W")) {
             getWorld().setCameraLocation(getWorld().getCameraX(), getWorld().getCameraY() - MOVE_AMOUNT);
             playerDirection = Direction.UP;
@@ -122,12 +151,10 @@ public class Player extends ScrollActor {
             getWorld().setCameraLocation(getWorld().getCameraX() + MOVE_AMOUNT, getWorld().getCameraY());
             playerDirection = Direction.RIGHT;
         }
-
-        moveAnimation();
     }
 
     private void moveAnimation() {
-        getImage().scale(100, 100);
+        getImage().scale(80, 80);
         if (isMoving()) {
             delayCounter++;
             if (delayCounter >= animationDelay) {
@@ -170,7 +197,7 @@ public class Player extends ScrollActor {
             // Ambil Interactable terdekat
             IInteractable obj = nearbyInteractables.get(0);
             obj.Interact(); // Menjalankan method Interact dari obj tersebut
-            Greenfoot.delay(10); // Mencegah input berulang
+            Greenfoot.delay(30); // Mencegah input berulang
         }
     }
 
