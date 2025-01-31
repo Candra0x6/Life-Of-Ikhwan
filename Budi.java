@@ -9,9 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Budi extends NPC
 {
      private WalletMission walletMission;
-    
-    public Budi() {
+        private MoneyManager moneyManager;
+        private boolean foundWallet = false;
+
+    public Budi(MoneyManager moneyManager) {
         super();
+        this.moneyManager = moneyManager;
         walletMission = new WalletMission(this);
     }
     
@@ -43,6 +46,7 @@ public class Budi extends NPC
     public void updateDialogForWallet() {
         // Hapus dialog lama
         dialogManager.clearDialogs();
+        foundWallet = true;
         
         // Tambah dialog baru setelah dompet ditemukan
         dialogManager.addDialog(new DialogLine(
@@ -58,6 +62,7 @@ public class Budi extends NPC
             null,
             true
         ));
+       
     }
     
     @Override
@@ -68,6 +73,13 @@ public class Budi extends NPC
         }
     }
     
+    public boolean isFoundWallet(){
+        return foundWallet;
+    }
+    
+    public void addPoint() {
+        moneyManager.addMoney(100.0);
+    }
     public WalletMission getWalletMission() {
         return walletMission;
     }

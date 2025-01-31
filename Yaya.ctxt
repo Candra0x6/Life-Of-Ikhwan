@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Yaya
+comment1.params=moneyManager
+comment1.target=Yaya(MoneyManager)
+comment2.params=
+comment2.target=void\ setupDialogs()
+comment3.params=
+comment3.target=void\ updateDialogForSuccess()
+comment4.params=
+comment4.target=void\ act()
+comment5.params=
+comment5.target=SchoolMission\ getSchoolMission()
+numComments=6

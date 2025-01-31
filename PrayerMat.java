@@ -8,20 +8,25 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class PrayerMat extends Box {
     private PrayerMission prayerMission;
-
+    private Player player;
     /**
      * Act - do whatever the PrayerMat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public PrayerMat(PrayerMission prayerMission) {
-        this.prayerMission = prayerMission;
+    public PrayerMat(Player player) {
+          prayerMission = new PrayerMission(player);
+          this.player = player;
     }
 
     public void act() {
         if (!prayerMission.isPraying() && isInteracting) {
-
-            prayerMission.startPrayer(player);
+            
+            prayerMission.startPrayer();
         }
+    }
+    
+    public PrayerMission getPrayerMission(){
+        return prayerMission;
     }
 }

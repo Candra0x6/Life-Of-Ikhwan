@@ -16,36 +16,49 @@ public class Battlefield extends ScrollWorld {
         public Battlefield() {
                 super(1280, 720, 1, 2500, 2500);
                 Greenfoot.setSpeed(50);
-                setPaintOrder(MissionDisplay.class, TextInfo.class, MoneyDisplay.class, BorderForest.class,
+                setPaintOrder(DialogManager.class, MissionDisplay.class, TextInfo.class, MoneyDisplay.class, BorderForest.class,
                                 TreeTop.class, Player.class, PlayerHome.class, PrayerMat.class, Budi.class,
                                 ZakatBox.class, Zero.class);
                 int numTrees = 2;
                 addObject(new BorderForest(), 1250, 1250);
+              
+                // adds mach
+
+                Budi budi = new Budi(GameManager.getInstance().getMoneyManager());
+                Zero zero = new Zero(GameManager.getInstance().getMoneyManager());
+                PrayerMat prayerMat = new PrayerMat(GameManager.getInstance().getPlayer());
+                addObject(prayerMat, 1200, 1000);
+                    addObject(prayerMat.getPrayerMission(), 1200, 1000);
+
+                
+                DialogManager dialogManager = new DialogManager();
+                                addObject(dialogManager, 0, 0);
                 ZakatBox zakatBox = new ZakatBox(GameManager.getInstance().getMoneyManager());
                 addObject(zakatBox, 1000, 900); // Tentukan posisi kotak zakat
 
-                // adds mach
-
-                Budi budi = new Budi();
-                Zero zero = new Zero(GameManager.getInstance().getMoneyManager());
-                PrayerMission prayerMission = new PrayerMission();
-                addObject(prayerMission, 0, 0); // Posisi tidak penting jika tidak perlu ditampilkan
-                PrayerMat prayerMat = new PrayerMat(prayerMission);
-                addObject(prayerMat, 1200, 1000);
-
-                MoneyDisplay moneyDisplay = new MoneyDisplay(zakatBox.getMoneyManager());
+            
+                MoneyDisplay moneyDisplay = new MoneyDisplay(GameManager.getInstance().getMoneyManager());
                 addObject(moneyDisplay, 0, 0);
                 MissionDisplay missionDisplay = new MissionDisplay();
                 addObject(missionDisplay, 0, 0);
-
                 addObject(zero, 1400, 600);
                 WalletMission mission = budi.getWalletMission();
+                Yaya yaya = new Yaya(GameManager.getInstance().getMoneyManager());
+                addObject(yaya, 1400, 1100);
+                
 
                 MissionManager.getInstance().addMission(budi.getWalletMission());
                 MissionManager.getInstance().addMission(zero.getToleranceMission());
-                MissionManager.getInstance().addMission(prayerMission);
-
+                MissionManager.getInstance().addMission(zakatBox.getAlmsMission());
+                MissionManager.getInstance().addMission(prayerMat.getPrayerMission());
+                MissionManager.getInstance().addMission(yaya.getSchoolMission());
                 Wallet wallet = mission.getWallet();
+                
+                
+                School school = new School("house06.png", "House1.png", yaya.getSchoolMission());
+                addObject(school, 1200, 1800);
+
+
                 addObject(budi, 1200, 900);
 
                 addObject(wallet, 1200, 600); // Set appropriate coordinates

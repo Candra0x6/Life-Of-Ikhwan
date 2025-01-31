@@ -10,6 +10,7 @@ public class WalletMission extends Mission {
 
     private Wallet wallet;
     private Budi budi;
+    static private boolean isClaim;
 
     public void act() {
         // Add your action code here.
@@ -19,13 +20,18 @@ public class WalletMission extends Mission {
         super("Temukan dompet Budi yang hilang");
         this.budi = budi;
         this.wallet = new Wallet();
-        this.id = 1;
+        this.id = 3;
+        this.isClaim = false;
     }
 
     public void update() {
         if (!isCompleted && wallet.isCollected()) {
             complete();
             budi.updateDialogForWallet();
+            if (!isClaim){
+            budi.addPoint();
+            isClaim = true;
+        }
         }
     }
 

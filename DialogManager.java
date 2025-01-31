@@ -21,7 +21,7 @@ public class DialogManager extends ScrollActor
     private Color textColor;
     private GreenfootImage dialogBoxImage; // Background image untuk dialog box
     
-    private int selectedOptionIndex;
+    private int selectedOptionIndex = 1;
     
     public DialogManager() {
         dialogLines = new ArrayList<>();
@@ -33,7 +33,7 @@ public class DialogManager extends ScrollActor
         dialogFont = new Font("Arial", 16);
         dialogBoxColor = new Color(0, 0, 0, 180);
         textColor = Color.BLACK;
-        
+        setLocation(0, 0 + 266);
         setupDialogBoxImage();
 
     }
@@ -112,7 +112,8 @@ public class DialogManager extends ScrollActor
     private void setupDialogBoxImage() {
         try {
             // Load gambar dialog box
-            dialogBoxImage = new GreenfootImage("dialogbox.png");  // Pastikan file ada di folder images
+            dialogBoxImage = new GreenfootImage("dialogbox.png");
+            setLocation(200, 0 + 266);// Pastikan file ada di folder images
             // Anda bisa menyesuaikan ukuran gambar jika perlu
             // dialogBoxImage.scale(400, 150);
         } catch (Exception e) {

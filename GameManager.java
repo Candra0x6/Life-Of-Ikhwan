@@ -25,7 +25,6 @@ public class GameManager {
     private MoneyManager moneyManager;
     private DialogManager dialogManager;
     private ZakatBox zakatBox;
-    private ZakatInteraction zakatInteraction;
     private Box box;
 
     private static GameManager instance;
@@ -37,7 +36,6 @@ public class GameManager {
         moneyManager = new MoneyManager(1000.0);
         player = new Player();
         dialogManager = new DialogManager(); // Create this first
-        zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
         box = new Box();
     }
 
@@ -59,6 +57,10 @@ public class GameManager {
 
     public MoneyManager getMoneyManager() {
         return moneyManager;
+    }
+    
+    public Player getPlayer(){
+        return player;
     }
 
     public DialogManager getDialogManager() {

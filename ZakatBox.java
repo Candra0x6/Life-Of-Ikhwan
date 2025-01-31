@@ -7,38 +7,34 @@
      * @version (a version number or a date)
      */
     public class ZakatBox extends Box {
-        private MoneyManager moneyManager;
-        private ZakatInteraction zakatInteraction;
-        private MoneyDisplay moneyDisplay;
-        public ZakatBox(MoneyManager moneyManager) {
-            super();
-            this.moneyManager = moneyManager;
-            zakatInteraction = new ZakatInteraction(moneyManager, dialogManager);
-            moneyDisplay = new MoneyDisplay(moneyManager);
-        }
+          private MoneyManager moneyManager;
+    private MoneyDisplay moneyDisplay;
+    private AlmsMission almsMission;
+    
+    public ZakatBox(MoneyManager moneyManager) {
+        super();
+        this.moneyManager = moneyManager;
+        almsMission = new AlmsMission(this);
+        moneyDisplay = new MoneyDisplay(moneyManager);
+        setupDialogs();
+    }
     
         protected void setupDialogs() {
             // Dialog 0: Initial question
             dialogManager.addDialog(new DialogLine(
                 "Sedekah Ke Mushola?",
                 new String[]{"Ya", "Tidak"},
-                new int[]{1, 4},
+                new int[]{1, 3},
                 false
             ));
     
-            // Dialog 1: Amount selection
-            dialogManager.addDialog(new DialogLine(
-                "Pilih jumlah zakat:",
-                new String[]{"50", "100", "250", "500"},
-                new int[]{2, 2, 2, 2},
-                false
-            ));
+          
     
             // Dialog 2: Confirmation (message updated dynamically)
             dialogManager.addDialog(new DialogLine(
-                "Anda yakin ingin membayar zakat sebesar %s?",
+                "Anda yakin ingin membayar zakat?",
                 new String[]{"Ya", "Tidak"},
-                new int[]{3, 4},
+                new int[]{2, 3},
                 false
             ));
     
@@ -59,15 +55,50 @@
             ));
         }
         
+          
+    public void updateDialogForSuccess() {
+        dialogManager.clearDialogs();
+        
+        dialogManager.addDialog(new DialogLine(
+            "Jazakallah khair! Terima kasih telah sedekah.",
+            null,
+            new int[]{1},
+            false
+        ));
+        
+        dialogManager.addDialog(new DialogLine(
+            "Semoga Sehat selalu",
+            null,
+            null,
+            true
+        ));
+        
+
+    }
         public MoneyManager getMoneyManager() {
             return moneyManager;
         }
     
-        public void act() {
-            super.act();
-            if (isInteracting) {
-                zakatInteraction.handleDialog(dialogManager.getCurrentDialogId(), dialogManager.getSelectedOptionIndex());
-                moneyDisplay.updateDisplay();
+     @Override
+    public void act() {
+        super.act();
+         if (dialogManager.isDialogActive()) {
+              
+            DialogLine currentDialog = dialogManager.getDialog(dialogManager.getCurrentDialogId());
+            
+            // Check if we're at the resolution dialog (ID 7) and conflict hasn't been rewarded yet
+            if (dialogManager.getCurrentDialogId() == 2) {
+                
+                if (almsMission != null) {
+                    almsMission.update();
+                    moneyManager.subtractMoney(50.0);
+
+                }
+
             }
         }
+    }
+    public AlmsMission getAlmsMission() {
+        return almsMission;
+    }
     }

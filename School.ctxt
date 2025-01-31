@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=School
+comment1.params=defaultImage\ interactedImage\ schoolMission
+comment1.target=School(java.lang.String,\ java.lang.String,\ SchoolMission)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ Interact()
+comment4.params=
+comment4.target=void\ reset()
+comment5.params=
+comment5.target=boolean\ isInteracted()
+numComments=6

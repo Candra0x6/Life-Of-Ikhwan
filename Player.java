@@ -19,7 +19,6 @@ public class Player extends ScrollActor {
     private int animationDelay = 5; // Ubah nilai ini untuk mengatur kecepatan animasi
     private int delayCounter = 0;
     private boolean isInDialog;
-    private boolean canMove = true;
 
     private Direction playerDirection;
 
@@ -85,7 +84,6 @@ public class Player extends ScrollActor {
     public void act() {
         if (!isInDialog) {
             moveAround();
-
             checkCollisionObject();
             checkInteraction(); // Cek interaksi dengan objek lain
             handleInput();
@@ -202,8 +200,6 @@ public class Player extends ScrollActor {
         return selectedOption;
     }
 
-    public void setCanMove(boolean canMove) {
-        this.canMove = canMove;
-    }
+    
     // Method untuk mengecek apakah pemain sedang dalam dialog
 }

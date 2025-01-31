@@ -5,7 +5,7 @@ public class ToleranceMission extends Mission {
 
     public ToleranceMission(Zero zero) {
         super("Misi Toleransi: Bantu menyelesaikan konflik antar umat");
-        this.id = 3;
+        this.id = 4;
         this.zero = zero;
         this.rewardGiven = false;
     }
