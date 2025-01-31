@@ -8,12 +8,15 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Door extends ScrollActor implements IInteractable {
     private GameManager.WorldState world;
+    protected int y, x;
 
-    public Door(GameManager.WorldState world) {
+    public Door(GameManager.WorldState world, int xDestination, int yDestination) {
         this.world = world;
+        x = xDestination;
+        y = yDestination;
     }
 
     public void Interact() {
-        GameManager.getInstance().changeWorld(world, 1000, 600);
+        GameManager.getInstance().changeWorld(world, x, y);
     }
 }
