@@ -2,8 +2,8 @@ public class Zero extends NPC {
     private ToleranceMission toleranceMission;
     private MoneyManager moneyManager;
     private boolean conflictResolved = false;
-    public Zero(MoneyManager moneyManager, DialogManager dialogManager) {
-        super(dialogManager);
+    public Zero(MoneyManager moneyManager) {
+        super();
           setImage("NPC6.png");
         getImage().scale(100, 100);
         toleranceMission = new ToleranceMission(this);

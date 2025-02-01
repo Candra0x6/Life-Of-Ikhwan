@@ -12,8 +12,8 @@ public class Budi extends NPC
         private MoneyManager moneyManager;
         private boolean foundWallet = false;
 
-    public Budi(MoneyManager moneyManager, DialogManager dialogManager) {
-        super(dialogManager);
+    public Budi(MoneyManager moneyManager) {
+        super();
         setImage("NPC1.png");
         getImage().scale(100, 100);
         this.moneyManager = moneyManager;

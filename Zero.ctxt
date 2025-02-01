@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Zero
-comment1.params=moneyManager\ dialogManager
-comment1.target=Zero(MoneyManager,\ DialogManager)
+comment1.params=moneyManager
+comment1.target=Zero(MoneyManager)
 comment2.params=
 comment2.target=void\ setupDialogs()
 comment3.params=

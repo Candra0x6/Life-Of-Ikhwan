@@ -37,9 +37,9 @@ public class Village extends ScrollWorld {
     addObject(dialogManager, getWidth()/2, getHeight()/2); // Tambahkan DialogManager ke world
     
         // NPCs
-        Budi budi = new Budi(GameManager.getInstance().getMoneyManager(), dialogManager);
-        Zero zero = new Zero(GameManager.getInstance().getMoneyManager(), dialogManager);
-        Yaya yaya = new Yaya(GameManager.getInstance().getMoneyManager(), dialogManager);
+        Budi budi = new Budi(GameManager.getInstance().getMoneyManager());
+        Zero zero = new Zero(GameManager.getInstance().getMoneyManager());
+        Yaya yaya = new Yaya(GameManager.getInstance().getMoneyManager());
         PrayerMat prayerMat = new PrayerMat(GameManager.getInstance().getPlayer());
         ZakatBox zakatBox = new ZakatBox(GameManager.getInstance().getMoneyManager());
         Wallet wallet = budi.getWalletMission().getWallet();
@@ -49,9 +49,9 @@ public class Village extends ScrollWorld {
         MissionDisplay missionDisplay = new MissionDisplay();
         addObject(missionDisplay, 0, 0);
 
-        addObject((budi), 2210, 1236);
-        addObject((zero), 1766, 1233);
-        addObject((yaya), 1619, 1164);
+        addObject(budi, 2210, 1236);
+        addObject(zero, 1766, 1233);
+        addObject(yaya, 1619, 1164);
         // addObject((prayerMat), 2390, 490);
         addObject((zakatBox), 2190, 809);
         addObject((wallet), 2637, 758);
