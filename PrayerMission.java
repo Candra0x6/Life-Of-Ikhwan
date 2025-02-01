@@ -15,12 +15,13 @@ public class PrayerMission extends Mission {
     private static final int PRAYER_DURATION = 600; // 10 seconds (60 frames per second)
     private static final int TEXT_DISPLAY_DURATION = 60; // 1 second for completion text
 
-    public PrayerMission() {
+    public PrayerMission(Player player) {
         super("Misi Salat: Lakukan simulasi salat");
         this.id = 2;
         this.prayerTimer = 0;
         this.isPraying = false;
         this.textDisplayed = false;
+        this.player = player;
     }
 
     @Override
@@ -30,13 +31,13 @@ public class PrayerMission extends Mission {
         }
     }
 
-    public void startPrayer(Player player) {
-        this.player = player;
+    public void startPrayer() {
+       
         if (!isPraying && !isCompleted) {
             isPraying = true;
             textDisplayed = true;
             prayerTimer = 0;
-            player.setCanMove(true);
+            player.setIsInDialog(true);
             updatePrayerText();
         }
     }
@@ -49,7 +50,8 @@ public class PrayerMission extends Mission {
             updatePrayerText();
         } else if (prayerTimer == PRAYER_DURATION) {
             // Show completion text when prayer duration is reached
-            player.setCanMove(true);
+            player.setIsInDialog(false);
+
             showTextAbovePlayer("Selesai salat!");
 
         } else if (prayerTimer >= PRAYER_DURATION + TEXT_DISPLAY_DURATION) {
@@ -78,7 +80,7 @@ public class PrayerMission extends Mission {
     private void completePrayer() {
         isPraying = false;
         textDisplayed = false;
-        player.setCanMove(true);
+            player.setIsInDialog(false);
 
         // Remove text and complete mission
         World world = player.getWorld();

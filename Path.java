@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Path extends ScrollActor
 {
     public Path() {
+        setImage("WorldGround.png");
         getImage().scale(getImage().getWidth() * 2, getImage().getHeight() * 2);
     }
 }

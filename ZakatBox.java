@@ -13,6 +13,7 @@
     
     public ZakatBox(MoneyManager moneyManager) {
         super();
+        
         this.moneyManager = moneyManager;
         almsMission = new AlmsMission(this);
         moneyDisplay = new MoneyDisplay(moneyManager);
@@ -92,7 +93,6 @@
                 if (almsMission != null) {
                     almsMission.update();
                     moneyManager.subtractMoney(50.0);
-
                 }
 
             }

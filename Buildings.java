@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Buildings extends Home
 {
     public Buildings(){
+        setImage("WorldBuilding0.png");
         getImage().scale(getImage().getWidth() * 2, getImage().getHeight() * 2);
     }
 }

@@ -22,6 +22,7 @@ public class ToleranceMission extends Mission {
         if (!isCompleted && !rewardGiven) {
 
             complete();
+            System.out.println(isCompleted);
             zero.updateDialogForSuccess();
         }
     }

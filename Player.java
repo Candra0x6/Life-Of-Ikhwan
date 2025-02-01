@@ -82,7 +82,6 @@ public class Player extends ScrollActor {
 
     // act method
     public void act() {
-        System.out.println("Player X: " + getGlobalX() + ", Player Y: " + getGlobalY());
         if (!isInDialog) {
             moveAround();
             checkCollisionObject();

@@ -15,6 +15,7 @@ public class PrayerMat extends Box {
      */
 
     public PrayerMat(Player player) {
+        setImage("Sajadah.png");
           prayerMission = new PrayerMission(player);
           this.player = player;
     }

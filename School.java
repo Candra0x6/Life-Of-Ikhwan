@@ -11,6 +11,10 @@ public class School extends Home implements IInteractable {
         this.hasInteracted = false;
         this.schoolMission = schoolMission;
         setImage(defaultImage);
+                getImage().scale(400, 400);
+
+        
+        
     }
     
     public void act() {

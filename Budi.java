@@ -14,6 +14,8 @@ public class Budi extends NPC
 
     public Budi(MoneyManager moneyManager) {
         super();
+        setImage("NPC1.png");
+        getImage().scale(100, 100);
         this.moneyManager = moneyManager;
         walletMission = new WalletMission(this);
     }

@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class VillageObject extends ScrollActor
 {
     public VillageObject(){
+        setImage("WorldObject2.png");
+        
         getImage().scale(getImage().getWidth() * 2, getImage().getHeight() * 2);
     }
 }

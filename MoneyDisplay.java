@@ -20,11 +20,12 @@ public class MoneyDisplay extends ScrollActor
     }
     
     public void updateDisplay() {
+      
         GreenfootImage image = new GreenfootImage(150, 50);
-        image.setColor(Color.WHITE);
+        image.setColor(new Color(0, 0, 0, 160));
         image.fillRect(0, 0, 150, 50);
-        image.setColor(Color.BLACK);
-        image.drawString("Saldo: Rp " + moneyManager.getBalance(), 10, 30);
+        image.setColor(Color.WHITE);
+        image.drawString("XP" + moneyManager.getBalance(), 10, 30);
         setImage(image);
         setLocation(150, 300 - 266);
     }
