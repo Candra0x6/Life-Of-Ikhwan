@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Yaya
-comment1.params=moneyManager
-comment1.target=Yaya(MoneyManager)
+comment1.params=moneyManager\ dialogManager
+comment1.target=Yaya(MoneyManager,\ DialogManager)
 comment2.params=
 comment2.target=void\ setupDialogs()
 comment3.params=

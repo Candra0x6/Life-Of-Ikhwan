@@ -11,5 +11,7 @@ public class Beach extends ScrollActor
     public Beach(){
         setImage("WorldOutsidefix.png");
         getImage().scale(getImage().getWidth() * 2, getImage().getHeight() * 2);
+                getImage().setTransparency(255); // Pastikan gambar fully opaque
+
     }
 }

@@ -17,15 +17,14 @@ public class Village extends ScrollWorld {
         super(1280, 720, 1, 4170, 1690);
         setBackground("WorldBase.png");
         Greenfoot.setSpeed(50);
-        setPaintOrder(DialogLine.class, DialogManager.class, MissionDisplay.class, TextInfo.class, MoneyDisplay.class, BorderForest.class,
+        setPaintOrder( DialogManager.class, DialogLine.class, MissionDisplay.class, TextInfo.class, MoneyDisplay.class, BorderForest.class,
                 TreeTop.class, Player.class, NPC.class, PlayerHome.class, PrayerMat.class, Budi.class, 
                 ZakatBox.class, Zero.class, Beach.class);
 
         addObject(new Path(), 2085, 1102);
         addObject(new VillageObject(), 1835, 1102);
         addObject(new Buildings(), 2085, 1102);
-        addObject(new Beach(), 1835, 1102);
-
+        
         // Building Colliders
         addObject(new PlayerHomeTruck(), 2390, 490);
         addObject(new NPCHouse(100, 100), 2115, 1145); // NPC House Red
@@ -34,15 +33,16 @@ public class Village extends ScrollWorld {
         addObject(new NPCHouse(120, 100), 1289, 1095); // NPC House Orange
         addObject(new NPCHouse(150, 150), 866, 1110); // NPC House Blue Big
 
+        DialogManager dialogManager = new DialogManager();
+    addObject(dialogManager, getWidth()/2, getHeight()/2); // Tambahkan DialogManager ke world
+    
         // NPCs
-        Budi budi = new Budi(GameManager.getInstance().getMoneyManager());
-        Zero zero = new Zero(GameManager.getInstance().getMoneyManager());
-        Yaya yaya = new Yaya(GameManager.getInstance().getMoneyManager());
+        Budi budi = new Budi(GameManager.getInstance().getMoneyManager(), dialogManager);
+        Zero zero = new Zero(GameManager.getInstance().getMoneyManager(), dialogManager);
+        Yaya yaya = new Yaya(GameManager.getInstance().getMoneyManager(), dialogManager);
         PrayerMat prayerMat = new PrayerMat(GameManager.getInstance().getPlayer());
         ZakatBox zakatBox = new ZakatBox(GameManager.getInstance().getMoneyManager());
         Wallet wallet = budi.getWalletMission().getWallet();
-
-        DialogManager dialogManager = new DialogManager();
 
         MoneyDisplay moneyDisplay = new MoneyDisplay(GameManager.getInstance().getMoneyManager());
         addObject(moneyDisplay, 0, 0);
@@ -64,7 +64,7 @@ public class Village extends ScrollWorld {
         MissionManager.getInstance().addMission(yaya.getSchoolMission());
        
          addObject(new Masjid(), 2094 ,728 );
-        addObject(new School("Sekolah1.png", "Sekolah2.png", yaya.getSchoolMission()), 3078, 563);
+        addObject(new School("Sekolah1.png", "Sekolah0.png", yaya.getSchoolMission()), 3078, 563);
         // addObject(new PrayerMat(GameManager.getInstance().getPlayer()), 2390, 490);
         
         addObject(new Border(900, 500), 3200, 1100);
@@ -76,5 +76,6 @@ public class Village extends ScrollWorld {
         // addObject(new Border(650, 742), 639, 742);
 
         addObject(new DoorHitbox(GameManager.WorldState.INDOOR, 700, 500, true), 2392, 583);
+        
     }
 }

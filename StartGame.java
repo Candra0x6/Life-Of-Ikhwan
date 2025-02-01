@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * The main menu world
- * 
- * @author Michael
- * @version 12/17/2014
- */
 public class StartGame extends World
 {
 
@@ -16,9 +10,8 @@ public class StartGame extends World
     public StartGame()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 600, 1); 
+        super(1280, 720, 1); 
         Greenfoot.setSpeed(100);
-
         prepare();
     }
 
@@ -29,7 +22,6 @@ public class StartGame extends World
     private void prepare()
     {
         PlayButton playbutton = new PlayButton();
-        addObject(playbutton, 300, 350);
-        
+        addObject(playbutton, 850, 200);
     }
 }

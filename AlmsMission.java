@@ -29,8 +29,7 @@ public class AlmsMission extends Mission
         if (!isCompleted) {
 
             complete();
-            System.out.println(isCompleted);
-            
+                     
             zakatBox.updateDialogForSuccess();
         }
     }

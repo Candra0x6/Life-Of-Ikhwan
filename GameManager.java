@@ -10,7 +10,6 @@ public class GameManager {
     Player player;
 
     public enum WorldState {
-        BATTLEFIELD(new Battlefield()),
         INDOOR(new InsideHome()),
         VILLAGE(new Village());
 

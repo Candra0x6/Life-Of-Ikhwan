@@ -2,8 +2,8 @@ public class Yaya extends NPC {
     private SchoolMission schoolMission;
     private MoneyManager moneyManager;
     private boolean conflictResolved = false;
-    public Yaya(MoneyManager moneyManager) {
-        super();
+    public Yaya(MoneyManager moneyManager, DialogManager dialogManager) {
+        super(dialogManager);
           setImage("NPC2.png");
         getImage().scale(100, 100);
         schoolMission = new SchoolMission(this);

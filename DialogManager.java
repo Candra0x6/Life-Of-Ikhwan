@@ -1,69 +1,80 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Write a description of class DIalogManager here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class DialogManager extends ScrollActor
-{
+public class DialogManager extends ScrollActor {
+
     private List<DialogLine> dialogLines;
-    
+
     private int currentDialogId;
     private int selectedChoice;
     public boolean isDialogActive;
-    
+
     private Font dialogFont;
     private Color dialogBoxColor;
     private Color textColor;
     private GreenfootImage dialogBoxImage; // Background image untuk dialog box
-    
+
     private int selectedOptionIndex = 1;
-    
+
     public DialogManager() {
         dialogLines = new ArrayList<>();
-        
+
         currentDialogId = 0;
         selectedChoice = 0;
         isDialogActive = false;
-        
+
         dialogFont = new Font("Arial", 16);
         dialogBoxColor = new Color(0, 0, 0, 180);
         textColor = Color.BLACK;
-        setLocation(0, 0 + 266);
+        setLocation(0, 266);
         setupDialogBoxImage();
+        
 
     }
-    
-    public int getCurrentDialogId() { return currentDialogId; }
-    public int getSelectedOptionIndex() { return selectedOptionIndex; }
-    public boolean isDialogActive() { return isDialogActive; }
-    
+
+    public int getCurrentDialogId() {
+        return currentDialogId;
+    }
+
+    public int getSelectedOptionIndex() {
+        return selectedOptionIndex;
+    }
+
+    public boolean isDialogActive() {
+        return isDialogActive;
+    }
+
     public void addDialog(DialogLine dialog) {
         dialogLines.add(dialog);
     }
-    
+
     public void startDialog(int dialogId) {
         currentDialogId = dialogId;
         isDialogActive = true;
         selectedChoice = 0;
     }
-    
- 
+
     public void update() {
-        if (!isDialogActive) return;
-    
+        if (!isDialogActive) {
+            return;
+        }
+
         // Pastikan currentDialogId valid
         if (currentDialogId < 0 || currentDialogId >= dialogLines.size()) {
             isDialogActive = false; // Tutup dialog jika ID tidak valid
             return;
         }
-    
+
         DialogLine current = dialogLines.get(currentDialogId);
-    
+
         // Handle input untuk memilih opsi
         if (Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")) {
             selectedChoice = Math.max(0, selectedChoice - 1);
@@ -75,7 +86,7 @@ public class DialogManager extends ScrollActor
             }
             Greenfoot.delay(10);
         }
-    
+
         // Handle input untuk memilih opsi atau melanjutkan dialog
         if (Greenfoot.isKeyDown("space") || Greenfoot.isKeyDown("enter")) {
             if (current.isEnd()) {
@@ -108,14 +119,12 @@ public class DialogManager extends ScrollActor
             Greenfoot.delay(10); // Prevent multiple inputs
         }
     }
-    
+
     private void setupDialogBoxImage() {
         try {
             // Load gambar dialog box
             dialogBoxImage = new GreenfootImage("dialogbox.png");
-            setLocation(200, 0 + 266);// Pastikan file ada di folder images
-            // Anda bisa menyesuaikan ukuran gambar jika perlu
-            // dialogBoxImage.scale(400, 150);
+            setLocation(200, 266);
         } catch (Exception e) {
             // Fallback ke background solid jika gambar tidak ditemukan
             dialogBoxImage = new GreenfootImage(400, 150);
@@ -123,28 +132,28 @@ public class DialogManager extends ScrollActor
             dialogBoxImage.fill();
         }
     }
-    
+
     public void draw(GreenfootImage image) {
         if (!isDialogActive || dialogLines.isEmpty() || currentDialogId >= dialogLines.size()) {
             return;
         }
-        
+
         DialogLine current = dialogLines.get(currentDialogId);
-        
+
         // Hitung posisi dialog box
         int boxX = 20;
         int boxY = image.getHeight() - dialogBoxImage.getHeight() - 20;
-        
+
         // Draw dialog box background
         image.drawImage(dialogBoxImage, boxX, boxY);
-        
+
         // Setup text drawing
         image.setFont(dialogFont);
         image.setColor(textColor);
-        
+
         // Draw main dialog text
         drawWrappedText(image, current.getText(), boxX + 50, boxY + 80, dialogBoxImage.getWidth() - 40);
-        
+
         // Draw choices if any
         if (current.getChoices() != null) {
             int choiceY = boxY + 100;
@@ -155,7 +164,7 @@ public class DialogManager extends ScrollActor
             }
         }
     }
-    
+
     // Method untuk mengubah gambar dialog box saat runtime jika diperlukan
     public void setDialogBoxImage(String imagePath) {
         try {
@@ -165,28 +174,32 @@ public class DialogManager extends ScrollActor
             System.out.println("Error loading dialog box image: " + imagePath);
         }
     }
-      public DialogLine getDialog(int dialogId) {
+
+    public DialogLine getDialog(int dialogId) {
         if (dialogId >= 0 && dialogId < dialogLines.size()) {
             return dialogLines.get(dialogId);
         }
         return null; // Return null if the dialog ID is invalid
-    } 
+    }
+
     // Method untuk mengatur opacity dialog box
     public void setDialogBoxOpacity(int opacity) {
         GreenfootImage newImage = new GreenfootImage(dialogBoxImage);
         newImage.setTransparency(opacity); // 0-255
         dialogBoxImage = newImage;
     }
-     public boolean hasDialogs() {
+
+    public boolean hasDialogs() {
         return !dialogLines.isEmpty();
     }
-     private void drawWrappedText(GreenfootImage image, String text, int x, int y, int maxWidth) {
+
+    private void drawWrappedText(GreenfootImage image, String text, int x, int y, int maxWidth) {
         // Simplified text wrapping menggunakan panjang string
         String[] words = text.split(" ");
         StringBuilder line = new StringBuilder();
         int currentY = y;
         int approxCharWidth = 10; // Perkiraan lebar per karakter
-        
+
         for (String word : words) {
             String testLine = line.toString() + " " + word;
             if (testLine.length() * approxCharWidth > maxWidth) {
@@ -194,16 +207,19 @@ public class DialogManager extends ScrollActor
                 line = new StringBuilder(word);
                 currentY += 25;
             } else {
-                if (line.length() > 0) line.append(" ");
+                if (line.length() > 0) {
+                    line.append(" ");
+                }
                 line.append(word);
             }
         }
         image.drawString(line.toString(), x, currentY);
     }
+
     public void clearDialogs() {
-    dialogLines.clear();
-    currentDialogId = 0;
-    selectedChoice = 0;
-    isDialogActive = false;
-}
+        dialogLines.clear();
+        currentDialogId = 0;
+        selectedChoice = 0;
+        isDialogActive = false;
+    }
 }

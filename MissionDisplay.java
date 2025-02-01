@@ -40,6 +40,8 @@ public class MissionDisplay extends ScrollActor
     }
     
     private void updateDisplay() {
+          
+
         GreenfootImage display = new GreenfootImage(background);
         setLocation(200, 0 + 266);
         // Draw title
@@ -52,8 +54,10 @@ public class MissionDisplay extends ScrollActor
         int yPos = PADDING * 5;
         
         List<Mission> missions = MissionManager.getInstance().getMissions();
+         
         for (Mission mission : missions) {
             String status = mission.isCompleted() ? "✓" : "□";
+            System.out.println(mission.isCompleted());
             String text = status + " " + mission.getDescription();
             
             // Set color based on completion

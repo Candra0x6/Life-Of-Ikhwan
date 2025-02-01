@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Budi
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Budi\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=moneyManager
-comment1.target=Budi(MoneyManager)
+comment1.params=moneyManager\ dialogManager
+comment1.target=Budi(MoneyManager,\ DialogManager)
 comment2.params=
 comment2.target=void\ setupDialogs()
 comment3.params=
